@@ -48,8 +48,18 @@ function formatText(text, keySize, type) {
     }
     return text;
 }
-
 $(document).ready(function(){
+    $("#page-content-wrapper").click(function() {
+        if($("#wrapper").hasClass( "toggled" )){
+            $("#wrapper").toggleClass("toggled");
+        }
+      });
+    
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        return false;
+    });
     $('textarea[name=AES_keyPlain]').on('paste', function(event) {
         let parse = $('input[name=checkPARSE]').is(":checked");
         let codingType = $('input[name=checkTYPE]:checked').val();

@@ -8,7 +8,7 @@ class block{
     this.dir = dir;
     this.angle = angle;
     this.previousState = 0;
-    this.rotating = false;
+    this.rotating = this.dir == 1 ? false : true;
     this.CurrentAngle = 0;
     this.r = 0;
     this.g = 0;
@@ -96,24 +96,27 @@ window.onload = function(){
         for(let x = 0; x < 50; x++){
           grid.push([]);
           for(let y = 0; y < 50; y++){
-            let a = new block(x*w, y*w, w, w, 0, 0, sketch);
+            let a = new block(x*w, y*w, w, w, sketch.random(Array(0,1)), 0, sketch);
             a.setColor(210,180,140);
             grid[x].push(a);
           }
         }
       }
+ //labai daug resursu reikalauja jei is zoomini ar ekranas labai didelis
       sketch.draw = function(){
+            //reikia random geriau padaryti
+        let rand =  sketch.random(0, 100000);
+        if(rand>93000){
+          let randX = parseInt(sketch.random(0, sketch.width) / widthOfBlock + 1);
+          let randY = parseInt( sketch.random(0, sketch.height)/ widthOfBlock + 1);
+          grid[randX][randY].setRotDir(sketch.random(Array(0,1)));
+        }
         sketch.background(102, 102, 153);
         sketch.fill(255, 51, 153);
         sketch.stroke(50);
         for(let i = 0; i < sketch.width / widthOfBlock + 1; i++){
           for(let k = 0; k < sketch.height / widthOfBlock + 1; k++){
-            if(i < 50 && k < 50){
-              //reikia random geriau padaryti
-              let rand =  sketch.random(0, 100000);
-              if(rand>99900){
-                grid[i][k].setRotDir(sketch.random(Array(0,1)));
-              }
+            if(i < 50 && k < 50){         
               grid[i][k].update(0);
               grid[i][k].draw(sketch);
             }
