@@ -48,11 +48,37 @@ function formatText(text, keySize, type) {
     }
     return text;
 }
+var swipeRightExec = false;
 $(document).ready(function(){
+    $( "#page-content-wrapper" ).on( "swiperight",  function() {
+        swipeRightExec = true;
+        if(!$("#wrapper").hasClass( "toggled" ) && $(".navbar-expand-lg .navbar-toggler").css("display") != "none"){
+            $("#wrapper").toggleClass("toggled");
+            
+            return false;
+        }
+    } );
+    $( "#sidebar-wrapper" ).on( "swipeleft",  function() {
+        swipeRightExec = true;
+        if($("#wrapper").hasClass( "toggled" ) && $(".navbar-expand-lg .navbar-toggler").css("display") != "none"){
+            $("#wrapper").toggleClass("toggled");
+            
+            return false;
+        }
+    } );
+    $(window).resize( function(){
+        if($(".navbar-expand-lg .navbar-toggler").css("display") == "none"){
+            if($("#wrapper").hasClass( "toggled" )){
+                $("#wrapper").toggleClass("toggled");
+            }
+        }
+    });
     $("#page-content-wrapper").click(function() {
-        if($("#wrapper").hasClass( "toggled" )){
+        if(!swipeRightExec)
+        if($("#wrapper").hasClass( "toggled" ) && $(".navbar-expand-lg .navbar-toggler").css("display") != "none"){
             $("#wrapper").toggleClass("toggled");
         }
+        swipeRightExec = false;
       });
     
     $("#menu-toggle").click(function(e) {
