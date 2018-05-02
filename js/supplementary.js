@@ -1,4 +1,3 @@
-
 jQuery(function ($) {
     
     //for AES olgo input field with OR
@@ -49,23 +48,24 @@ function formatText(text, keySize, type) {
     return text;
 }
 var swipeRightExec = false;
+
 $(document).ready(function(){
-    $( "#page-content-wrapper" ).on( "swiperight",  function() {
-        swipeRightExec = true;
-        if(!$("#wrapper").hasClass( "toggled" ) && $(".navbar-expand-lg .navbar-toggler").css("display") != "none"){
-            $("#wrapper").toggleClass("toggled");
+    // $( "" ).on( "swiperight",  function() {
+    //     swipeRightExec = true;
+    //     if(!$("#wrapper").hasClass( "toggled" ) && $(".navbar-expand-lg .navbar-toggler").css("display") != "none"){
+    //         $("#wrapper").toggleClass("toggled");
             
-            return false;
-        }
-    } );
-    $( "#sidebar-wrapper" ).on( "swipeleft",  function() {
-        swipeRightExec = true;
-        if($("#wrapper").hasClass( "toggled" ) && $(".navbar-expand-lg .navbar-toggler").css("display") != "none"){
-            $("#wrapper").toggleClass("toggled");
+    //         return false;
+    //     }
+    // } );
+    // $( "#sidebar-wrapper" ).on( "swipeleft",  function() {
+    //     swipeRightExec = true;
+    //     if($("#wrapper").hasClass( "toggled" ) && $(".navbar-expand-lg .navbar-toggler").css("display") != "none"){
+    //         $("#wrapper").toggleClass("toggled");
             
-            return false;
-        }
-    } );
+    //         return false;
+    //     }
+    // } );
     $(window).resize( function(){
         if($(".navbar-expand-lg .navbar-toggler").css("display") == "none"){
             if($("#wrapper").hasClass( "toggled" )){

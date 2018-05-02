@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<script>
+			var OSName="Unknown OS";
+			if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
+			if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
+			if (navigator.appVersion.indexOf("X11")!=-1) OSName="UNIX";
+			if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";
+		</script>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<meta name="description" content="">
-		<meta name="author" content="">
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1">
+		<meta name="description" content="Third project">
+		<meta name="author" content="Julius Simas Simutis">
 		<title>Fun with JavaScript</title>
 
 
@@ -14,19 +21,23 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 		<link href="css/simple-sidebar.css" rel="stylesheet">
 		<link href="css/main.css" rel="stylesheet">
-		<!--=========================================
+		<!--=========================================`
 		JavaScript
 		============================================= -->
-		<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
+		<script src="https://hammerjs.github.io/dist/hammer.js"></script>
+		<script src="https://cdn.rawgit.com/hammerjs/jquery.hammer.js/master/jquery.hammer.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 		<script async src=https://CDN.JSDelivr.net/g/p5.js(p5.min.js+addons/p5.dom.js+addons/p5.sound.js)></script>
 		<script type="text/javascript" src="js/background.js"></script>
 		<script type="text/javascript" src="js/supplementary.js"></script>
 	</head>
-	<body data-spy="scroll" data-target=".navbar" data-offset="50">
+	<!-- data-spy="scroll" data-target=".navbar" data-offset="50"  -->
+	<body >
+		<div id="gestureDetection" style = "position: fixed; top:0; left:0; width: 100px; height: 100%;background-color: rgba(0,0,0,0); z-index: 10000;">
+		</div>
 		<div id="wrapper">
 					<!-- Sidebar -->
 					<div id="sidebar-wrapper" >
@@ -157,4 +168,5 @@
 
 
 	</body>
+	<script type="text/javascript" src="js/mobile.js"></script>
 </html>
