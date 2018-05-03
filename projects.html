@@ -20,7 +20,8 @@
 		============================================= -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 		<link href="css/simple-sidebar.css" rel="stylesheet">
-		<link href="css/main.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
+        <link href="css/projects.css" rel="stylesheet">
 		<link href="css/prism.css" rel="stylesheet">
 		<!--=========================================`
 		JavaScript
@@ -32,14 +33,20 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 		<script async src=https://CDN.JSDelivr.net/g/p5.js(p5.min.js+addons/p5.dom.js+addons/p5.sound.js)></script>
-		<script type="text/javascript" src="js/background.js"></script>
+        <script type="text/javascript" src="js/background.js"></script>
+        <script type="text/javascript" src="js/steering_evolution.js"></script>
+        <script type="text/javascript" src="js/infSign.js"></script>
 		<script type="text/javascript" src="js/supplementary.js"></script>
-		<script type="text/javascript" src="js/prism.js"></script>
-		<script>
-			window.onload = function(){
-				var background_sketch = new p5(backgroundSketch, 'backgroundCanvas');
-			}
-		</script>
+        <script type="text/javascript" src="js/prism.js"></script>
+        <script>
+            window.onload = function(){
+                //and now create the sketch
+                var background_sketch = new p5(backgroundSketch, 'backgroundCanvas');
+                var vehicle_sketch = new p5(vehicleSketch, 'vehicleCanvas');
+                var vehicle_sketch = new p5(infSketch, 'infCanvas');
+            }
+        </script>
+
 	</head>
 	<!-- data-spy="scroll" data-target=".navbar" data-offset="50"  -->
 	<body  id="gestureDetection">
@@ -52,17 +59,17 @@
 									Fun With JavaScript
 							</li>
 							<li >
-								<a href="index.html" id="mobileNav_home">Home</a>
-							</li>
-							<li>
-								<a href="projects.html" id="mobileNav_projects">Projects</a>
-							</li>
-							<li>
-								<a href="gallery.html" id="mobileNav_gallery">Gallery</a>
-							</li>
-							<li>
-								<a href="about.html" id="mobileNav_about">About</a>
-							</li>
+                                    <a href="index.html" id="mobileNav_home">Home</a>
+                                </li>
+                                <li>
+                                    <a href="projects.html" id="mobileNav_projects">Projects</a>
+                                </li>
+                                <li>
+                                    <a href="gallery.html" id="mobileNav_gallery">Gallery</a>
+                                </li>
+                                <li>
+                                    <a href="about.html" id="mobileNav_about">About</a>
+                                </li>
 						</ul>
 					</div>
 					<!-- /#sidebar-wrapper -->
@@ -80,13 +87,13 @@
 								<button href="#menu-toggle"  id="menu-toggle" class="navbar-toggler" type="button">
 									<span class="navbar-toggler-icon"></span>
 								</button>
-								<a class="navbar-brand" href="#">Fun w/ JS</a>
+								<a class="navbar-brand" href="#">Projects</a>
 									<div id="navbarContent" class="collapse navbar-collapse">
 											<ul class="navbar-nav mr-auto">
-											<li class="nav-item active">
+											<li class="nav-item ">
 												<a class="nav-link" href="index.html">Home</a>
 											</li>
-											<li class="nav-item">
+											<li class="nav-item active">
 												<a class="nav-link" href="projects.html">Projects</a>
 											</li>
 											<li class="nav-item">
@@ -102,59 +109,16 @@
 										</div>
 									</nav>
 							<div id="page-content">
-						<section class="container-fluid col-lg-8" style="background-color: white">
-						<h1>What is JavaScript?</h1>
-						<div class=" text-justify">
-							JavaScript is a scripting or programming language that allows you to implement complex things on web pages — every time a web page does more than just sit there and display static information for you to look at — displaying timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, etc. — you can bet that JavaScript is probably involved. It is the third layer of the layer cake of standard web technologies, two of which (HTML and CSS) we have covered in much more detail in other parts of the Learning Area.
-						</div>
-						</section>
-						<section class="container-fluid col-lg-8" style="background-color: white">
-							<h1>What is p5.js</h1>
-							<div class=" text-justify">
-								p5.js is a JavaScript library that starts with the original goal of Processing—to make coding accessible for artists, designers, educators, and beginners—and reinterprets this for today's web.
-								<br>
-								Using the original metaphor of a software sketchbook, p5.js has a full set of drawing functionality. However, you're not limited to your drawing canvas, you can think of your whole browser page as your sketch! For this, p5.js has addon libraries that make it easy to interact with other HTML5 objects, including text, input, video, webcam, and sound.
-							</div>								
+						<section class="container-fluid col-lg-8" style="background-color: white; padding: 10px; height: 600px !important;">
+                        <h1>Evolution steering</h1>
+                        <div id="vehicleCanvas">
+                        </div>
 						</section>
 
-						<section class="container-fluid col-lg-8" style="background-color: white">
-							<h1>Background example</h1>
-							<div >
-								<h3>CSS</h3>
-								<pre class="line-numbers">
-									<code class="language-css">
-										#backgroundCanvas{
-											overflow: hidden;
-											position: fixed !important;
-											z-index: -1;
-										}
-									</code>
-								</pre>
-								<h3>HTML</h3>
-								<pre class="line-numbers">
-									<code class="language-html">
-											&lt;!DOCTYPE html&gt;
-											&lt;html&gt;
-												&lt;head&gt;
-													&lt;script async src=https://CDN.JSDelivr.net/g/p5.js(p5.min.js+addons/p5.dom.js+addons/p5.sound.js)&gt;&lt;/script&gt;
-												&lt;/head&gt;
-												&lt;body&gt;
-												&lt;/body&gt;
-											&lt;/html&gt;
-									</code>
-								</pre>
-								<h3>JavaScript</h3>
-								<div style="max-height: 60vh;overflow-y: scroll;">
-
-									<pre class="line-numbers" >
-										<code id="loadBackgroundCode" class="language-javascript" >
-											Failed to load file from: https://simofy.github.io/js/background.js
-										</code>
-									</pre>
-								</div>
-								<h3>Explanation</h3>
-
-							</div>		
+						<section class="container-fluid col-lg-8" style="background-color: white; padding: 10px; height: 600px !important;">
+							<h1>Infinity sign</h1>
+                            <div id="infCanvas">
+                            </div>	
 
 						</section>
 			
@@ -186,10 +150,6 @@
 	<!-- End footer Area -->
 
 	</body>
-	<script>
-		$("#loadBackgroundCode").load("https://simofy.github.io/js/background.js");
-		
-		Prism.highlightElement($('#loadBackgroundCode')[0]);
-	</script>
+	
 	<script type="text/javascript" src="js/mobile.js"></script>
 </html>

@@ -48,8 +48,14 @@ function formatText(text, keySize, type) {
     return text;
 }
 var swipeRightExec = false;
-
+function loadBackgroundCode(path){
+    $("#div1").load("demo_test.txt");
+}
 $(document).ready(function(){
+
+    
+    // Prism.highlightAll();
+    //$( "#loadBackgroundCode" ).addClass( "language-javascript" );
     // $( "" ).on( "swiperight",  function() {
     //     swipeRightExec = true;
     //     if(!$("#wrapper").hasClass( "toggled" ) && $(".navbar-expand-lg .navbar-toggler").css("display") != "none"){
@@ -67,7 +73,7 @@ $(document).ready(function(){
     //     }
     // } );
     $(window).resize( function(){
-        if($(".navbar-expand-lg .navbar-toggler").css("display") == "none"){
+        if($(".navbar-expand-sm .navbar-toggler").css("display") == "none"){
             if($("#wrapper").hasClass( "toggled" )){
                 $("#wrapper").toggleClass("toggled");
             }
@@ -75,13 +81,14 @@ $(document).ready(function(){
     });
     $("#page-content-wrapper").click(function() {
         if(!swipeRightExec)
-        if($("#wrapper").hasClass( "toggled" ) && $(".navbar-expand-lg .navbar-toggler").css("display") != "none"){
+        if($("#wrapper").hasClass( "toggled" ) && $(".navbar-expand-sm .navbar-toggler").css("display") != "none"){
             $("#wrapper").toggleClass("toggled");
         }
         swipeRightExec = false;
       });
     
     $("#menu-toggle").click(function(e) {
+        console.log("S");
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
         return false;
