@@ -35,17 +35,14 @@
 		<script type="text/javascript" src="js/supplementary.js"></script>
 	</head>
 	<!-- data-spy="scroll" data-target=".navbar" data-offset="50"  -->
-	<body >
-		<div id="gestureDetection" style = "position: fixed; top:0; left:0; width: 100px; height: 100%;background-color: rgba(0,0,0,0); z-index: 10000;">
-		</div>
+	<body  id="gestureDetection">
 		<div id="wrapper">
 					<!-- Sidebar -->
 					<div id="sidebar-wrapper" >
 						<ul class="sidebar-nav">
-							<li class="sidebar-brand">
-								<a href="#">
+							<li class="sidebar-brand text-center text-white " style="font-size: 1.5em; ">
+							
 									Fun With JavaScript
-								</a>
 							</li>
 							<li>
 								<a href="#">Home<span class="sr-only">(current)</span></a>
@@ -68,11 +65,11 @@
 							
 							<header id="intro_header" class="container-fluid">
 								
-								<div class="text-center" style="opacity: 100% !important;">
-									<h1 class="text-white text-uppercase">Fun with JavaScript</h1>
+								<div class="text-center">
+									<h1 id="introText" class="text-white text-uppercase">Fun with JavaScript</h1>
 								</div>
 							</header>
-							<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top flex-nowrap">
+							<nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top flex-nowrap">
 								<button href="#menu-toggle"  id="menu-toggle" class="navbar-toggler" type="button">
 									<span class="navbar-toggler-icon"></span>
 								</button>
@@ -97,12 +94,24 @@
 											</span> -->
 										</div>
 									</nav>
-						<div class="container-fluid" style="background-color: white">
-						<h1>Simple Sidebar</h1>
-							<p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-							<p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+							<div id="page-content">
+						<div class="container-fluid col-lg-8" style="background-color: white">
+						<h1>What is JavaScript?</h1>
+						<div class=" text-justify">
+							JavaScript is a scripting or programming language that allows you to implement complex things on web pages — every time a web page does more than just sit there and display static information for you to look at — displaying timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, etc. — you can bet that JavaScript is probably involved. It is the third layer of the layer cake of standard web technologies, two of which (HTML and CSS) we have covered in much more detail in other parts of the Learning Area.
+						</div>
 
 							<!-- <button href="#menu-toggle" class="navbar-toggler" id="menu-toggle"><span class="navbar-toggler-icon"></span></button> -->
+						</div>
+						<br>
+						<div class="container-fluid col-lg-8" style="background-color: white">
+							<h1>What is p5.js</h1>
+							<div class=" text-justify">
+								p5.js is a JavaScript library that starts with the original goal of Processing—to make coding accessible for artists, designers, educators, and beginners—and reinterprets this for today's web.
+								<br>
+								Using the original metaphor of a software sketchbook, p5.js has a full set of drawing functionality. However, you're not limited to your drawing canvas, you can think of your whole browser page as your sketch! For this, p5.js has addon libraries that make it easy to interact with other HTML5 objects, including text, input, video, webcam, and sound.
+							</div>								
+<!-- <button href="#menu-toggle" class="navbar-toggler" id="menu-toggle"><span class="navbar-toggler-icon"></span></button> -->
 						</div>
 					<!-- /#page-content-wrapper -->
 			
@@ -111,59 +120,29 @@
 			<!-- Start Feature Area -->
 			<section class="featured-area">
 				<div class="container">
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
 				</div>
 			</section>
 			<!-- End Feature Area -->
 			
-
+		</div>
 			<!-- Start footer Area -->
+
 			<footer>
-				<div class="container">
-					<div class="footer-content d-flex justify-content-between align-items-center flex-wrap">
-						<!-- <div class="logo">
-							<img src="img/logo.png" alt="">
-						</div> -->
-						<div class="copy-right-text">Copyright &copy; 2018  |  All rights reserved to Simofy. </div>
+					<div class="container col-lg-8">
+						<div class="footer-content d-flex justify-content-between align-items-center flex-wrap">
+							<!-- <div class="logo">
+								<img src="img/logo.png" alt="">
+							</div> -->
+							<div class="copy-right-text">Copyright &copy; 2018  |  All rights reserved to Simofy. </div>
+						</div>
 					</div>
-				</div>
-			</footer>
+				</footer>
 			<!-- End footer Area -->
 
 		</div>
-		</div>
+	</div>
 
 
 
