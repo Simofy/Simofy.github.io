@@ -1,0 +1,17 @@
+.mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+.routes-popup-style{
+    background-color: white !important;
+}
+.stops-popup-style{
+    background-color: white !important;
+}
+.routes-popup-style-static:hover{
+    background-color: bisque;
+}
+.mapboxgl-popup-content {
+
+    background: rgba(255,255,255,0.3);
+}
