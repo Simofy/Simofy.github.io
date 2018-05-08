@@ -246,7 +246,7 @@ map.on('load', function () {
 
 
 
-    var url = 'http://m.stops.lt/vilnius/gps.txt';
+    var url = 'https://m.stops.lt/vilnius/gps.txt';
     
     var geojson_transport_live = {
         "type": "FeatureCollection",
