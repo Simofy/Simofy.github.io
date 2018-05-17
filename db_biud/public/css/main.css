@@ -1,0 +1,112 @@
+/* added style */
+#backgroundCanvas{
+
+ 
+  pointer-events: none; 
+  z-index: -100;
+  position: fixed !important;
+  pointer-events: none;
+  overflow: hidden;
+
+}
+section{
+  margin-bottom: 10px;
+}
+.banner-area{
+  background-image: -moz-linear-gradient(0deg, #e66587 0%, #f09458 100%);
+  background-image: -webkit-linear-gradient(0deg, #e66587 0%, #f09458 100%);
+  background-image: -ms-linear-gradient(0deg, #e66587 0%, #f09458 100%);
+}
+
+body:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed ;
+  background-image: -moz-linear-gradient(0deg, #e66587 0%, #f09458 100%);
+  background-image: -webkit-linear-gradient(0deg, #e66587 0%, #f09458 100%);
+  background-image: -ms-linear-gradient(0deg, #e66587 0%, #f09458 100%);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+
+.affix {
+  top:0;
+  width: 100%;
+  z-index: 9999 !important;
+}
+.navbar {
+  margin-bottom: 0px;
+  background-color: red;
+}
+
+.affix ~ .container-fluid {
+ position: relative;
+ top: 50px;
+}
+#intro_header {
+  height:50px;
+  
+  background-image: linear-gradient(90deg, rgba(230,101,135, 0.6) 0%,rgba(240,148,88, 0.6) 100%);
+}
+#dt1 {
+  background: #B8C1C8;
+  border-bottom: 1px solid #989EA4;
+  border-top: 1px solid #717D85;
+  color: #FFF;
+  margin: 0;
+  padding: 2px 0 0 12px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -1px;
+}
+.custom-toggler.navbar-toggler {
+  border-color: rgb(255,102,203);
+}
+.custom-toggler .navbar-toggler-icon {
+background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+@media all and (max-width: 480px) {
+  #introText {
+    font-size: 8vw; 
+  }
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background:#ccc;
+}
+html, body {
+  height: 100%;
+}
+.vertical-center {
+  height:100%;
+  width:100%;
+  text-align: center;  /* align the inline(-block) elements horizontally */
+  font: 0/0 a;         /* remove the gap between inline(-block) elements */
+}
+
+.vertical-center:before {    /* create a full-height inline block pseudo=element */
+  content: ' ';
+  display: inline-block;
+  vertical-align: middle;  /* vertical alignment of the inline element */
+  height: 100%;
+}
+
+.vertical-center > .container-fluid{
+  background-color:lightgrey;
+  background-color: rgba(211,211,211, 0.6);
+  display: inline-block;
+  vertical-align: middle;  /* vertical alignment of the inline element */
+  font: 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;        /* <-- reset the font property */
+}
+#loginbox {
+  /* background-color: rgb(150,150,150);
+  background-color: rgba(150,150,150, 0.6); */
+}

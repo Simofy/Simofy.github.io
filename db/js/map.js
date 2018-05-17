@@ -246,14 +246,68 @@ map.on('load', function () {
 
 
 
-    var url = 'https://m.stops.lt/vilnius/gps.txt';
-    
+    var url = 'https://stops.lt/vilnius/gps.txt';
+
     var geojson_transport_live = {
         "type": "FeatureCollection",
         "features": []
     };
     window.setInterval(function() {
-       
+        // var txtFile = new XMLHttpRequest();
+        // txtFile.open("GET", "http://my.remote.url/myremotefile.txt", true);
+        // txtFile.onreadystatechange = function() {
+        //   if (txtFile.readyState === 4) {  // Makes sure the document is ready to parse.
+        //     if (txtFile.status === 200) {  // Makes sure it's found the file.
+        //       lines = txtFile.responseText.split("\n"); // Will separate each line into an array
+        //       geojson_transport_live.features = [];
+        //       lines.forEach(element => {
+        //           if(element != "" ){
+        //               let paroperties = element.split(',');
+        //               let type = paroperties[0];
+        //               let name = paroperties[1];
+        //               let lat = paroperties[2];
+        //               let lon = paroperties[3];
+        //               let latReal = lat.slice(0,2) + '.' + lat.slice(2);
+        //               let lonReal = lon.slice(0,2) + '.' + lon.slice(2);
+        //               geojson_transport_live.features.push({"type": "Feature","geometry":{"type": "Point","coordinates": [latReal, lonReal]}, "properties": {"type":type, "name":name}});
+        //           }
+        //       });
+  
+
+        //     }
+        //   }
+        // }
+        // txtFile.send(null);
+        // $.get(
+        //     'http://www.corsproxy.com/' +
+        //     url,
+        //     function( data ) {
+        //         let text = data;
+        //         let tranArr = text.split('\n');
+        //         //console.log(tranArr);
+        //         geojson_transport_live.features = [];
+        //         tranArr.forEach(element => {
+        //             if(element != "" ){
+        //                 let paroperties = element.split(',');
+        //                 let type = paroperties[0];
+        //                 let name = paroperties[1];
+        //                 let lat = paroperties[2];
+        //                 let lon = paroperties[3];
+        //                 let latReal = lat.slice(0,2) + '.' + lat.slice(2);
+        //                 let lonReal = lon.slice(0,2) + '.' + lon.slice(2);
+        //                 geojson_transport_live.features.push({"type": "Feature","geometry":{"type": "Point","coordinates": [latReal, lonReal]}, "properties": {"type":type, "name":name}});
+        //             }
+        //         });
+    
+        //       });
+
+
+            //If the expected response is text/plain
+            
+
+            //If the expected response is JSON
+            //var response = $.parseJSON(data.contents);
+        //});
         $.get( url, function( data ) {
             let text = data;
             let tranArr = text.split('\n');
