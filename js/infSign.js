@@ -1,76 +1,97 @@
-var infSketch = function(sketch){
-    var d = 8;
-    var n = 5;
-    let scale = 200;
-    let size = 25;
-    let colorArray = [];
-    let step = 0.06;
-    let time = 0.0;
-    let delay = 10;
+$(document).ready(function(){
+    //--------------------------------------------------------------------------------------------------------------
+    //
+    //  Utils.
+    //
+    //--------------------------------------------------------------------------------------------------------------
+    /**
+     * Gets random float.
+     * @param {number} min - From.
+     * @param {number} max - To.
+     * @returns {number}
+     */
+    var randomFloat = function (min, max) {
+        return min + (max - min) * Math.random();
+    };
+    /**
+     * Gets random integer.
+     * @param {number} min - From.
+     * @param {number} max - To.
+     * @returns {number}
+     */
+    var test = 4;
+    var randomInt = function (min, max) {
+        return Math.round(randomFloat(min, max));
+    };
+    var infSketch = function(){
+        this.d = 8;
+        this.n = 5;
+        this.scale = stage.width() / test;
+        this.size = 25;
+        this.colorArray = [];
+        this.shapeArray = [];
+        this.step = 0.06;
+        this.time = 0.0;
+        this.delay = 10;
+        this.randDigit = 0;
+        this.layer = stage.layer();
+        //x = cos t , y = sin t * cos t
+        for(let i = 0; i < this.size; i++) {
+            let r_ = randomInt(0,255);
+            let g_ = randomInt(0,255);
+            let b_ = randomInt(0,255);
+            this.colorArray.push({r:r_, g:g_, b:b_});
+            this.shapeArray.push(this.layer.path());
+        }
+    }
     function getPos(t){
-        let x = sketch.cos(t);
-        let y = sketch.sin(t) * sketch.cos(t);
+        let x = Math.cos(t);
+        let y = Math.sin(t) * Math.cos(t);
         return [x, y];
     }
-    sketch.windowResized = function(){
-        
-        sketch.resizeCanvas($( "#infCanvas" ).width(), $(  "#infCanvas" ).height());
+    infSketch.prototype.windowResized = function(){
+        this.scale = stage.width() / test;
     }
-    sketch.setup =function() {
-        //x = cos t , y = sin t * cos t
-        var myCanvas = sketch.createCanvas($( "#infCanvas" ).width() , $(  "#infCanvas" ).height());
-        myCanvas.parent('infCanvas');
-        for(let i = 0; i < size; i++) {
-            let r_ = sketch.random(255);
-            let g_ = sketch.random(255);
-            let b_ = sketch.random(255);
-            colorArray.push({r:r_, g:g_, b:b_});
+    infSketch.prototype.draw = function() {
+        this.time += this.step;
+        stage.suspend();
+        let r_ = randomInt(0,255);
+        let g_ = randomInt(0,255);
+        let b_ = randomInt(0,255);
+        this.colorArray.shift();
+        this.colorArray.push({r:r_, g:g_, b:b_});
+        let start = getPos(this.time);
+        let end = getPos(this.time - (this.size-1) * this.step);
+        for (var a = 0; a < this.size; a++) {
+            let pos = getPos(this.time - a * this.step);
+            let c = this.colorArray[(this.size-1)- a];
+            let linePath = this.shapeArray[a];
+            linePath.clear();
+            linePath.moveTo(end[0]*this.scale + stage.width() / 2, end[1]*this.scale + stage.height() / 2);
+            linePath.lineTo(pos[0]*this.scale + stage.width() / 2, pos[1]*this.scale + stage.height() / 2);
+            linePath.lineTo(start[0]*this.scale + stage.width() / 2, start[1]*this.scale + stage.height() / 2);
+            linePath.fill("rgb("+c.r+","+c.g+","+c.b+")");
+            linePath.stroke('none');
+            linePath.close();
         }
-    }
-    let randDigit = 0;
-
-     sketch.draw = function() {
-        time += step;
-        sketch.background(51);
-        sketch.push();
-        sketch.translate(sketch.width / 2, sketch.height / 2);
-        sketch.stroke(51);
-        let r_ = sketch.random(255);
-        let g_ = sketch.random(255);
-        let b_ = sketch.random(255);
-        colorArray.shift();
-        colorArray.push({r:r_, g:g_, b:b_});
-        
-        //noFill();
-        sketch.strokeWeight(1);
-        let start = getPos(time);
-        let end = getPos(time - (size-1) * step);
-        for (var a = 0; a < size; a++) {
-            let pos = getPos(time - a * step);
-            let c = colorArray[(size-1)- a];
-            sketch.fill(c.r,c.g,c.b);
-            sketch.push();
-            sketch.beginShape();
-            sketch.vertex(end[0]*scale, end[1]*scale);
-            sketch.vertex(pos[0]*scale, pos[1]*scale);
-            sketch.vertex(start[0]*scale, start[1]*scale);
-            sketch.endShape(sketch.CLOSE);
-            sketch.pop();
-        }
-        
-        sketch.pop();
-        //sketch.noLoop();
-        // sketch.push();
-        // sketch.translate(sketch.width / 2, sketch.height / 2);
-        // sketch.beginShape();
-        // sketch.fill(r,g,b);
-        // //noFill();
-        // sketch.strokeWeight(2);
-        // for (var a = 0; a < size; a++) {
-        //     let pos = getPos(time - a * step);
-        //     sketch.vertex(pos[1]*scale, pos[0]*scale);
-        // }
-        // sketch.endShape(sketch.OPEN);
-        // sketch.pop();
+        stage.resume();
     } 
-};
+    var stage = acgraph.create('infCanvas');
+    window.requestAnimationFrame = window.requestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.oRequestAnimationFrame ||
+    window.msRequestAnimationFrame ||
+    function (callback) {
+        setTimeout(callback, 1000 / 60);
+    };
+    var infSign = new infSketch();
+    draw();
+    function draw() {
+        window.requestAnimationFrame(draw);
+        infSign.draw();
+    }
+    window.addEventListener('resize', function(){
+        infSign.windowResized();
+      }, true);
+});

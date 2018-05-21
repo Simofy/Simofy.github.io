@@ -1,5 +1,5 @@
 var mr = 0.01;
-var debug;
+var debug = false;
 function Vehicle(x, y, sketch, dna) {
     this.sketch = sketch;
   this.acceleration = sketch.createVector(0, 0);
@@ -135,7 +135,7 @@ function Vehicle(x, y, sketch, dna) {
     sketch.rotate(angle);
 
 
-    if (debug.checked()) {
+    if (debug) {
         sketch.strokeWeight(3);
         sketch.stroke(0, 255, 0);
         sketch.noFill();
@@ -224,7 +224,7 @@ var vehicleSketch = function(sketch){
             poison.push(sketch.createVector(x, y));
         }
 
-        debug = sketch.createCheckbox("Debug");
+        //debug = sketch.createCheckbox("Debug");
     }
 
     sketch.mouseDragged = function() {

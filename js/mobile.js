@@ -55,17 +55,17 @@ if(OSName != "Windows"){
             }
         }
     });
-    Hammer(document.getElementById('menu-toggle')).on("tap", function() {
-        if($(".navbar-expand-sm .navbar-toggler").css("display") != "none")
-            $("#wrapper").toggleClass("toggled");
-    });
-    Hammer(document.getElementById('mobileNav_home')).on("tap", function() {
-        window.location.replace("index.html");
-    });
-    Hammer(document.getElementById('mobileNav_projects')).on("tap", function() {
-        window.location.replace("projects.html");
-    });
-    Hammer(document.getElementById('mobileNav_gallery')).on("tap", function() {
-        window.location.replace("gallery.html");
-    });
+    // Hammer(document.getElementById('menu-toggle')).on("tap", function() {
+    //     if($(".navbar-expand-sm .navbar-toggler").css("display") != "none")
+    //         $("#wrapper").toggleClass("toggled");
+    // });
+    // Hammer(document.getElementById('mobileNav_home')).on("tap", function() {
+    //     window.location.replace("index.html");
+    // });
+    // Hammer(document.getElementById('mobileNav_projects')).on("tap", function() {
+    //     window.location.replace("projects.html");
+    // });
+    // Hammer(document.getElementById('mobileNav_gallery')).on("tap", function() {
+    //     window.location.replace("gallery.html");
+    // });
 }

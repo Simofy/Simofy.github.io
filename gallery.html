@@ -31,15 +31,11 @@
 		<script src="https://cdn.rawgit.com/hammerjs/jquery.hammer.js/master/jquery.hammer.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-		<script async src=https://CDN.JSDelivr.net/g/p5.js(p5.min.js+addons/p5.dom.js+addons/p5.sound.js)></script>
+		<script src="https://cdn.anychart.com/releases/8.2.1/js/graphics.min.js"></script>
+		<!-- <script async src=https://CDN.JSDelivr.net/g/p5.js(p5.min.js+addons/p5.dom.js+addons/p5.sound.js)></script> -->
         <script type="text/javascript" src="js/background.js"></script>
 		<script type="text/javascript" src="js/supplementary.js"></script>
         <script type="text/javascript" src="js/prism.js"></script>
-        <script>
-            window.onload = function(){
-                var background_sketch = new p5(backgroundSketch, 'backgroundCanvas');
-            }
-        </script>
 	</head>
 	<!-- data-spy="scroll" data-target=".navbar" data-offset="50"  -->
 	<body  id="gestureDetection">
@@ -163,7 +159,8 @@
 		</div>
 	</div>
 	<!-- End footer Area -->
-
+	<div id="backgroundSketch" style="width: 100%; height: 100%;position: fixed !important;z-index: -100 !important;background :rgb(102, 102, 153)">
+	</div>
 	</body>
 	
 	<script type="text/javascript" src="js/mobile.js"></script>

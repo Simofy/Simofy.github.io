@@ -14,25 +14,26 @@ class block{
     this.g = 0;
     this.b = 0;
     this.canvas = canvas;
+    this.reDraw();
+    this.angleStep = 10;//canvas.HALF_PI / 10;
+    
   }
   setColor(r,g,b){
     this.r = r;
     this.g = g;
     this.b = b;
   }
-  update(time){
-    
-    let canvas = this.canvas;
+  update(){
     if(this.rotating == true){
-      let angle = canvas.HALF_PI / 10;
       let dir = this.dir % 2;
-      this.CurrentAngle+=dir == 0 ? angle : -angle;
-      if(this.CurrentAngle > canvas.HALF_PI || this.CurrentAngle < -canvas.HALF_PI){
+      this.CurrentAngle+=dir == 0 ? this.angleStep : -this.angleStep;
+      if(this.CurrentAngle > 90 || this.CurrentAngle < -90){
         this.rotating = false;
         this.CurrentAngle = 0;
-        this.angle +=dir == 0 ? canvas.HALF_PI : -canvas.HALF_PI;
+        this.angle +=dir == 0 ? 90 : -90;
       }
     }
+    this.canvas.setRotation(this.angle + this.CurrentAngle,this.x+this.w / 2,this.y-this.w / 2);
   }
   setRotDir(dir){
     if(this.rotating == false){
@@ -62,65 +63,136 @@ class block{
   getSize(){
     return this.w,this.h;
   }
-  draw(){
+  reDraw(){
     if(this.display){
       let canvas = this.canvas;
-      canvas.push();
-      canvas.translate(this.x, this.y,this.w/2, this.w/2);
-      canvas.noFill();
-      canvas.stroke(0);
-      canvas.strokeWeight(5);
-      canvas.rotate(this.angle + this.CurrentAngle);
-      let y = canvas.cos(this.angle) * this.w / 2;
-      let x = canvas.sin(this.angle) * this.h / 4;
-      canvas.stroke(this.r,this.g,this.b);
-      canvas.arc(-this.w/2,-this.w/2, this.w, this.w, 0 , canvas.HALF_PI, canvas.OPEN );
-      canvas.arc(this.w/2,this.w/2, this.w, this.w, canvas.PI, 3 * canvas.HALF_PI, canvas.OPEN );
-      canvas. pop();
+      let y = Math.cos(this.angle) * this.w / 2;
+      let x = Math.sin(this.angle) * this.h / 4;
+      canvas.moveTo(-this.w/2,-this.w/2);
+      canvas.arcTo(this.w, this.w, 90, -90);
+      canvas.moveTo(this.w/2 ,this.w/2);
+      canvas.arcTo(this.w, this.w, 180, 90);
+      //blockElm.setColor(210,180,140);
+      canvas.stroke("#d2b48c", 4, null, "round");
+      canvas.setRotation(this.angle + this.CurrentAngle,0,0);
+      canvas.translate(this.x,this.y);
+      //canvas.close();
     }
   }
-}
-var backgroundSketch = function(sketch){
-    var canvas;
-    var grid = [];
-    var widthOfBlock = 100;
-    sketch.windowResized = function(){
-      sketch.resizeCanvas(sketch.windowWidth, sketch.windowHeight);
-    }
-    sketch.setup = function(){
-      canvas = sketch.createCanvas(sketch.windowWidth, sketch.windowHeight);
-      canvas.position(0, 0);
-      canvas.id('backgroundCanvas');
-      let w = widthOfBlock;
-      for(let x = 0; x < 50; x++){
-        grid.push([]);
-        for(let y = 0; y < 50; y++){
-          let a = new block(x*w, y*w, w, w, sketch.random(Array(0,1)), 0, sketch);
-          a.setColor(210,180,140);
-          grid[x].push(a);
+}//end block class
+//_________________________
+$(document).ready(function(){
+  var bg_0;
+
+  /**
+   * background animation class.
+   * @constructor
+   */
+  background = function () {
+      /**
+       * Drops storage.
+       * @type {Array.<Point3D>}
+       */
+      this.blockElm = [];
+      //let i = 0;
+      this.w_ = 80;
+      let w_ = this.w_;
+      for(let x = 0; x < stage.width() / w_ + 1; x++){
+        let line = [];
+        for(let y = 0; y < stage.height() / w_ + 1; y++){
+          line.push(new block(x*w_, y*w_, w_ / 2, w_ / 2, randomInt(0,1), 0, stage.path()));
+          line[line.length-1].update();
         }
+        this.blockElm.push(line);
       }
-    }
-//labai daug resursu reikalauja jei is zoomini ar ekranas labai didelis
-    sketch.draw = function(){
-          //reikia random geriau padaryti
-      let rand =  sketch.random(0, 100000);
+
+  };
+  //--------------------------------------------------------------------------------------------------------------
+  //
+  //  Utils.
+  //
+  //--------------------------------------------------------------------------------------------------------------
+  /**
+   * Gets random float.
+   * @param {number} min - From.
+   * @param {number} max - To.
+   * @returns {number}
+   */
+  var randomFloat = function (min, max) {
+      return min + (max - min) * Math.random();
+  };
+  /**
+   * Gets random integer.
+   * @param {number} min - From.
+   * @param {number} max - To.
+   * @returns {number}
+   */
+  var randomInt = function (min, max) {
+      return Math.round(randomFloat(min, max));
+  };
+  /**
+   * Complete repaint.
+   */
+  background.prototype.repaint = function () {
+    
+      stage.suspend();
+      let rand =  randomInt(0, 100000);
       if(rand>93000){
-        let randX = parseInt(sketch.random(0, sketch.width) / widthOfBlock + 1);
-        let randY = parseInt( sketch.random(0, sketch.height)/ widthOfBlock + 1);
-        grid[randX][randY].setRotDir(sketch.random(Array(0,1)));
+        let randX = randomInt(0, this.blockElm.length-1);
+        let randY = randomInt(0, this.blockElm[0].length-1);
+        this.blockElm[randX][randY].setRotDir(randomInt(0,1));
       }
-      sketch.background(102, 102, 153);
-      sketch.fill(255, 51, 153);
-      sketch.stroke(50);
-      for(let i = 0; i < sketch.width / widthOfBlock + 1; i++){
-        for(let k = 0; k < sketch.height / widthOfBlock + 1; k++){
-          if(i < 50 && k < 50){         
-            grid[i][k].update(0);
-            grid[i][k].draw(sketch);
-          }
-        }
+      for(let x = 0; x < this.blockElm.length; x++)
+        for(let y = 0; y < this.blockElm[0].length; y++)
+          this.blockElm[x][y].update();
+      stage.resume();
+  };
+  background.prototype.update = function(){
+    this.w_ = 80;
+    let w_ = this.w_;
+    for(let x = this.blockElm.length; x < stage.width() / w_ + 1; x++){
+      let line = [];
+      for(let y = 0; y < stage.height() / w_ + 1; y++){
+        line.push(new block(x*w_, y*w_, w_ / 2, w_ / 2, randomInt(0,1), 0, stage.path()));
+        line[line.length-1].update();
       }
-      sketch.noFill();
+      this.blockElm.push(line);
     }
-};
+    for(let x = 0; x < this.blockElm.length; x++){
+      let line = [];
+      for(let y = this.blockElm[x].length; y < stage.height() / w_ + 1; y++){
+        this.blockElm[x].push(new block(x*w_, y*w_, w_ / 2, w_ / 2, randomInt(0,1), 0, stage.path()));
+        //line
+        this.blockElm[x][this.blockElm[x].length-1].update();
+        //console.log("S");
+      }
+      //this.blockElm[x].push(line);
+    }
+    
+  }
+  //--------------------------------------------------------------------------------------------------------------
+  //
+  //  General.
+  //
+  //--------------------------------------------------------------------------------------------------------------
+  var cont = document.getElementById('backgroundSketch');
+  var stage = acgraph.create('backgroundSketch');
+  window.requestAnimationFrame = window.requestAnimationFrame ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame ||
+          window.oRequestAnimationFrame ||
+          window.msRequestAnimationFrame ||
+          function (callback) {
+              setTimeout(callback, 1000 / 60);
+          };
+  
+  bg_0 = new background();
+  draw();
+  function draw() {
+      window.requestAnimationFrame(draw);
+      bg_0.repaint();
+  }
+  window.addEventListener('resize', function(){
+    bg_0.update();
+  }, true);
+});

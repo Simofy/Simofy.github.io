@@ -106,7 +106,7 @@ body {
 @media(min-width:768px) {
   #page-content-wrapper {
     padding: 0px;
-    position: relative;
+    /* position: relative; */
   }
   /*-----------*/
   #wrapper {
