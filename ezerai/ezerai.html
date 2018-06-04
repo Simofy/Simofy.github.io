@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login V19</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="data.js"></script>
+    <!--===============================================================================================-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("body").mousemove(function (event) {
+                $("#bod").css('left', -100 + event.pageX / 80);
+                $("#bod").css('top', -100 + event.pageY / 80);
+            });
+            $("#button_").click(function () {
+                let size = data_ezerai["Lapas1"].length;
+                let randId = Math.floor(Math.random() * size);
+                let lucky = data_ezerai["Lapas1"][randId];
+                var content = "<table>"
+                for (i = 0; i < lucky.length; i++) {
+                    if(i != 2)
+                        content += '<tr><td>' + lucky[i] + '</td></tr>';
+                        else
+                        content += '<tr><td>Pavadinimas: ' + lucky[i] + '</td></tr>';
+                }
+                content += "</table>"
+
+                $('#place').html(content);
+
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="bod">
+    </div>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+                Duok man atsitiktinį EŽERĄ!!!!
+                <button class="button_new not-jumpy animated" id="button_" style="margin-bottom:10px ">
+                    DABAR!!
+                </button>
+                <div id="place"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>
