@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Lietuvos žargonai</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="data.js"></script>
+    <!--===============================================================================================-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#button_0").click(function (e) {
+                let size = data_zargonas.length;
+                let randId = Math.floor(Math.random() * size);
+                let lucky = data_zargonas[randId];
+                var content = '<table class="z_table">';
+                content += '<tr><td class="font-weight-bold">' + lucky["name"] + '</td></tr>';
+                content += '<tr><td class="z_def">Apibūdinimas: ' + lucky["definition"] + '</td></tr>';
+                content += "</table>"
+                $('#place').html(content);
+
+                $("#button_0").blur();
+                
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="bod">
+    </div>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 wrap-box">
+                <h5>
+                    Lietuvių žargono randomizeris
+                </h5>
+                <div id="button_">
+
+                    <button type="button" id="button_0" class="button_new not-jumpy animated"  style="margin-bottom:10px ">
+                        ŠAUK!
+                    </button>
+                </div>
+                <div id="place"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>
