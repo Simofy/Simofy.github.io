@@ -41,7 +41,6 @@ function preload() {
         if (definedUrl == undefined) definedUrl = 'https://picsum.photos/' + options.game.w + '/' + options.game.h + '/?random';
         else
             definedUrl = 'https://picsum.photos/' + options.game.w + '/' + options.game.h + '/?image=' + definedUrl;
-        console.log(definedUrl)
         xhr.open('GET', definedUrl, true);
         xhr.onload = function () {
             base_image = new Image();
@@ -272,7 +271,6 @@ function draw() {
                     if (whichGroup != -1) {
                         jigsawOffset = {};
                         puzzlePieces.forEach(element => {
-                            //console.log(element)
                             if (element.groupId == whichGroup) {
 
                                 jigsawOffset[element.voronoiId] = {
@@ -543,7 +541,6 @@ function loadEndGameScreen() {
     var timeDiff = endTime - startTime;
     timeDiff /= 1000;
     $("#endGameTime")[0].innerHTML = timeDiff+" ";
-    console.log(timeDiff)
     $("#endGame").css('display', 'block');
     
     let linkSrc = "https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fsimofy.github.io%2Fgames%2Fphoto-puzzle%2Fpuzzle.html%3Fimage%3D" + options.base_image_number + "%26selecteddifficulty%3D" + options.game.sites + "&layout=button&size=small&mobile_iframe=true&width=59&height=20&appId";
@@ -557,12 +554,12 @@ $(document).ready(function () {
     $("#puzzlePiecesValue")[0].innerHTML = $("#puzzlePiecesSlider")[0].value;
     $("#puzzlePiecesSlider")[0].oninput = function () {
         $("#puzzlePiecesValue")[0].innerHTML = this.value;
+        $("#linkSameEndGame")[0].href = "/games/photo-puzzle/puzzle.html?selecteddifficulty=" + $("#puzzlePiecesSlider")[0].value + "&image="+options.base_image_number;
     }
     $("#button").click(function (e) {
         event.preventDefault();
         let url = "/games/photo-puzzle/puzzle.html?selecteddifficulty=" + $("#puzzlePiecesSlider")[0].value;
         //let url = "file:///B:/github/Simofy.github.io/games/photo-puzzle/puzzle.html?selecteddifficulty=" + $("#puzzlePiecesSlider")[0].value;
-        console.log(url);
         location.replace(url);
     });
 });
