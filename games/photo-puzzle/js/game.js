@@ -31,7 +31,7 @@ var dragFlag = false;
 var jigsawOffset = {};
 var whichGroup = -1;
 var endGame = false;
-
+let customImage = undefined;
 if (OSName == "Windows" || OSName == "MacOS")
 function preload() {
 	if (OSName == "Windows" || OSName == "MacOS") {
@@ -42,7 +42,7 @@ function preload() {
 		else
 			definedUrl = 'https://picsum.photos/' + options.game.w + '/' + options.game.h + '/?image=' + definedUrl;
 
-		let customImage = getUrlParameter("custom");
+		customImage = getUrlParameter("custom");
 		if (customImage != undefined) {
 			definedUrl = customImage;
 			definedUrl = definedUrl.split('"')[1];
@@ -566,6 +566,7 @@ function loadEndGameScreen() {
 	$("#iframeEndGame")[0].src = linkSrc;
 	$("#linkImageEndGame")[0].href = options.base_image_url;
 	$("#linkSameEndGame")[0].href = "/games/photo-puzzle/puzzle.html?selecteddifficulty=" + $("#puzzlePiecesSlider")[0].value + "&image=" + options.base_image_number;
+	if(customImage != undefined)$("#linkSameEndGame")[0].href += "&custom=\""+customImage+"\"";
 }
 $(document).ready(function () {
 
@@ -574,6 +575,8 @@ $(document).ready(function () {
 	$("#puzzlePiecesSlider")[0].oninput = function () {
 		$("#puzzlePiecesValue")[0].innerHTML = this.value;
 		$("#linkSameEndGame")[0].href = "/games/photo-puzzle/puzzle.html?selecteddifficulty=" + $("#puzzlePiecesSlider")[0].value + "&image=" + options.base_image_number;
+		if(customImage != undefined)$("#linkSameEndGame")[0].href += "&custom=\""+customImage+"\"";
+	
 	}
 	$("#button").click(function (e) {
 		event.preventDefault();
