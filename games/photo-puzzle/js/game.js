@@ -575,7 +575,7 @@ $(document).ready(function () {
 	$("#puzzlePiecesSlider")[0].oninput = function () {
 		$("#puzzlePiecesValue")[0].innerHTML = this.value;
 		$("#linkSameEndGame")[0].href = "/games/photo-puzzle/puzzle.html?selecteddifficulty=" + $("#puzzlePiecesSlider")[0].value + "&image=" + options.base_image_number;
-		if(customImage != undefined)$("#linkSameEndGame")[0].href += "&custom=\""+customImage+"\"";
+		if(customImage != undefined)$("#linkSameEndGame")[0].href += "&custom="+customImage;
 	
 	}
 	$("#button").click(function (e) {
