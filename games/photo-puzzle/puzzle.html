@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        var OSName = "Unknown OS";
+        if (navigator.appVersion.indexOf("Win") != -1) OSName = "Windows";
+        if (navigator.appVersion.indexOf("Mac") != -1) OSName = "MacOS";
+        if (navigator.appVersion.indexOf("X11") != -1) OSName = "UNIX";
+        if (navigator.appVersion.indexOf("Linux") != -1) OSName = "Linux";
+    </script>
+    <title>Jigsaw puzzle</title>
+    <meta name="description" content="Jigsaw puzzle">
+    <meta name="author" content="Julius Simas Simutis">
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <link rel="icon" type="image/png" href="https://cdn3.iconfinder.com/data/icons/buntu-basic/100/puzzle_glyph_convert-256.png"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/game.css">
+    <!--===============================================================================================-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.js"></script>
+    <script type="text/javascript" src="http://www.raymondhill.net/voronoi/rhill-voronoi-core.js"></script>
+    <script type="text/javascript" src="js/math.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#button").click(function (e) {
+                $("#button").blur();
+            });
+        });
+    </script>
+
+
+
+    <!--===============================================================================================-->
+</head>
+
+<body>
+    <div id="game-sketch">
+    </div>
+    <div>
+        <div id="button_div">
+            <h3>
+                random photo puzzle
+            </h3>
+            Generates random photo
+            <div>
+
+                <a href="" type="button" class="button_new not-jumpy animated" id="button" style="margin-bottom:10px ">
+                    New game
+                </a>
+                <div class="slidecontainer">
+                    <input type="range" min="2" max="150" class="slider" id="puzzlePiecesSlider">
+                    <p>Puzzle pieces:
+                        <span id="puzzlePiecesValue"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="endGame" class="text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <h4 class="display-4">Congratulations!</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        You have completetd in:
+                        <span id="endGameTime"></span>seconds.
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <a id="linkImageEndGame" class="btn btn-dark btn-xs" href="#">Link to image</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        Want to compete?
+                    </div>
+                    <div class="col-sm">
+                        <iframe id="iframeEndGame" src="" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                            allowTransparency="true" allow="encrypted-media"></iframe>
+                    </div>
+
+                </div>
+                <div class="row">
+                        <div class="col-sm">
+                                Want to do the same image? (change difficulty before clicking)
+                            </div>
+                            <div class="col-sm">
+                                    <a id="linkSameEndGame" class="btn btn-dark btn-xs" href="#">Replay</a>
+                            </div>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+            Made by: Julius Simas Simutis. E-mail:
+            <a href="about.html" style="text-decoration: none; color: black"> julius-simutis@gmail.com</a>
+            Using for photo generation:
+            <a href="https://picsum.photos/" style="text-decoration: none; color: black">https://picsum.photos/</a>
+        </footer>
+        <script src="js/game.js"></script>
+</body>
+
+</html>

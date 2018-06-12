@@ -1,0 +1,184 @@
+body {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.button_new:hover,
+.button_new:focus {
+  -moz-box-shadow: 0 0px 0 0 rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0px 0 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0px 0 0 rgba(0, 0, 0, 0.5);
+  top: 10px;
+}
+
+.button_new:active {
+  -moz-box-shadow: inset 0 2px 0px 1px rgba(0, 0, 0, 0.5), 0 0 0 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 0 2px 0px 1px rgba(0, 0, 0, 0.5), 0 0 0 0 rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 2px 0px 1px rgba(0, 0, 0, 0.5), 0 0 0 0 rgba(0, 0, 0, 0.1);
+  top: 10px;
+}
+
+.not-jumpy:before {
+  content: '';
+  background-color: transparent;
+  display: block;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  height: 0;
+  width: 100%;
+}
+
+.not-jumpy:hover:before,
+.not-jumpy:focus:before,
+.not-jumpy:active:before {
+  border: 1px solid transparent;
+  left: -1px;
+}
+
+.not-jumpy:hover:before,
+.not-jumpy:focus:before {
+  height: 5px;
+}
+
+.not-jumpy:active:before {
+  height: 5px;
+}
+
+.button_new {
+  background-color: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
+  display: block;
+  position: relative;
+  top: 6px;
+  text-decoration: none;
+  width: 100px;
+}
+
+.animated {
+  -webkit-transition: all .1s ease;
+  -moz-transition: all .1s ease;
+  -ms-transition: all .1s ease;
+  -o-transition: all .1s ease;
+  transition: all .1s ease;
+}
+
+.animated:active {
+  -webkit-transition: all 0s ease;
+  -moz-transition: all 0s ease;
+  -ms-transition: all 0s ease;
+  -o-transition: all 0s ease;
+  transition: all 0s ease;
+}
+
+.animated-option {
+  transition: all .4s ease;
+}
+
+#game-sketch {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed !important;
+  z-index: 1;
+}
+
+#button_div {
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  color: white !important;
+}
+
+#button_div div {
+  position: fixed;
+  right: calc(50% - 100px);
+}
+
+#button {
+  width: 200px;
+  background: rgb( 152, 152, 203);
+  background-color: rgba( 152, 152, 203, 0.5);
+  color: white !important;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background-color: rgb( 152, 152, 203);
+  background-color: rgba( 152, 152, 203, 0.5);
+  z-index: 10;
+  text-align: center;
+}
+
+.slidecontainer {
+  width: 200px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: rgb( 132, 132, 173);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: rgb( 132, 132, 173);
+  cursor: pointer;
+}
+
+#endGame {
+  color: white !important;
+  display: none;
+  width: 500px;
+  height: 250px;
+  position: fixed;
+  top: calc(50% - 125px);
+  left: calc(50% - 250px);
+  z-index: 10;
+  background-color: rgb(102, 102, 153);
+  background-color: rgba(102, 102, 153, 0.9);
+}
