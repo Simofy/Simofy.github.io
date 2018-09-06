@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1">
+	<meta name="description" content="Diary">
+	<meta name="author" content="Julius Simas Simutis">
+	<title>Simofy's diary</title>
+
+
+	<!--=========================================
+		CSS
+		============================================= -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+	 crossorigin="anonymous">
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<link href="../css/mfglabs/mfglabs_iconset.css" rel="stylesheet">
+	<link rel="stylesheet" href="../css/main.css">
+
+	<!--=========================================
+		JavaScript
+		============================================= -->
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous"></script>
+	<script src="https://hammerjs.github.io/dist/hammer.js"></script>
+	<script src="https://cdn.rawgit.com/hammerjs/jquery.hammer.js/master/jquery.hammer.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+	 crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+	 crossorigin="anonymous"></script>
+	<!--__________________________________________-->
+	<script src="https://cdn.anychart.com/releases/8.2.1/js/graphics.min.js"></script>
+	<script async src=https://CDN.JSDelivr.net/g/p5.js(p5.min.js+addons/p5.dom.js+addons/p5.sound.js)></script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+	<script src="js/setup.js"></script>
+	<script src="js/effects.js"></script>
+</head>
+
+<body>
+	<div class="intro_text">
+		<div>
+
+			<div data-aos="fade-down" data-aos-duration="1500" class="start-bold-text" id="start_text_fadeout">
+
+				Mano dienoraštis
+			</div>
+		</div>
+		<div id="down_symbol_start" class="down-symbol">
+			<a href="#intro_desc_text">
+
+				<i class="icon-chevron_down"></i>
+			</a>
+		</div>
+		<div id="skip_symbol_start">
+			<a href="#menuBar">
+
+				<i class="icon-step_forward"></i>
+			</a>
+
+		</div>
+	</div>
+	<div>
+
+		<div id="intro_desc_box">
+
+			<div id="intro_desc_text" data-aos="zoom-out" data-aos-anchor="#trigger-intro-text">kelionė iš bostono į Eindhoveną</div>
+		</div>
+		<div id="intro_bike">
+
+
+			<div id="trigger-intro-text" style="position: absolute; top: 200px;"></div>
+		</div>
+
+	</div>
+	<div style="width: 100%;display: flex; align-content: center; align-items: center; text-align: center; font-size: 36px">
+		<div style="width: 100%">
+			Žemėlapis
+		</div>
+
+	</div>
+	<div class="intro-map">
+
+	</div>
+	<div id="diary_intro">
+		<div id="diary_intro_text">Kodėl?</div>
+		<div id="diary_intro_main_text">
+			<div class="text-box-story">
+				<div id="d_intro_0" class="text-center-story">
+					Viskas labai paprasta.
+				</div>
+			</div>
+			<div class="text-box-story">
+				<div id="d_intro_1" class="text-center-story">
+					Kodėl gi ne?
+				</div>
+			</div>
+			<div class="text-box-story">
+				<div id="d_intro_2" class="text-center-story">
+					Viskas prasidėjo kai atsikėliau ir nusprendžiau išvažiuoti į užsienį padirbti.
+				</div>
+			</div>
+			<div class="text-box-story">
+				<div id="d_intro_3" class="text-center-story">
+					Įsėdau į autobusą ir išvažiavau į Bostoną.
+				</div>
+			</div>
+			<div class="text-box-story">
+				<div id="d_intro_4" class="text-center-story">
+					Dirbau dirbau...
+				</div>
+			</div>
+			<div class="text-box-story">
+				<div id="d_intro_45" class="text-center-story">
+					Ir pagalvojau būtų smagu parvažiuoti dviračiu.
+				</div>
+			</div>
+			<div class="text-box-story">
+				<div id="d_intro_5" class="text-center-story">
+					Bet išsigandau atstumo.
+				</div>
+			</div>
+			<div class="text-box-story">
+				<div id="d_intro_6" class="text-center-story">
+					Todėl nusprendižau nuvažiuoti iki Eindhoveno.
+				</div>
+			</div>
+			<div class="text-box-story">
+				<div id="d_intro_7" class="text-center-story">
+					Nes, kodėl gi ne?
+				</div>
+			</div>
+
+		</div>
+		<div id="diary_intro_story_box">
+			<div id="d_intro_left" style="height: auto;width: 200px;">
+
+			</div>
+			<div>
+				<i id="diary_intro_story_box_icon" class="fas fa-question"></i>
+			</div>
+			<div id="d_intro_right" style="height: auto;width: 200px;">
+
+			</div>
+		</div>
+	</div>
+	<div>
+		<div id="menuBar" class="menuSmooth" style=" background: black; width: 100%;">
+			<nav class="center">
+				<ul>
+					<li><a href="/lt/stats"><i class="fas fa-chart-area"></i><span>Statistika</span></a></li>
+					<li><a href="/lt/map"><i class="fas fa-globe-americas"></i><span>Žemėlapis</span></a></li>
+					<li><a href="#"><i class="fas fa-images"></i><span>Galerija</span></a></li>
+					<li><a href="https://www.facebook.com/julsimass"><i class="fas fa-info-circle"></i><span>Apie</span></a></li>
+				</ul>
+
+			</nav>
+		</div>
+
+		<div style="position: relative;display: flex;height: 300px !important; width: 100%;   justify-content: center;
+        align-items: center; text-align: center">
+			<div id="backgroundSketch">
+			</div>
+
+			<div id="prep_day_intro_box">
+				<div id="recomendation_menu">
+					<div>
+
+						For more great stuff <i class="fas fa-level-up-alt"></i>
+					</div>
+				</div>
+				<div id="prep_day_intro_text">
+
+					Pasiruošimo diena
+					<div style="width: 100% !important; font-size: 24px;">
+						Rugsėjo 5 diena
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div id="equipment_canvas">
+
+		</div>
+		<div id="equipment_canvas_sub">
+			<i class="fas fa-bicycle" style="margin:3px"></i>
+			Click Here for loudout.
+		</div>
+		<div id="prep_day_description">
+			<div class="col-md-6">
+
+				<div class="row">
+					<div class="col-md-12">
+
+						Visai reikiamai įrangai išleidau apie šimtą svarų. Įsidėjau apie ___ kalorijų verto maisto.
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+
+						Drabužiai yra visoms oro salygoms, tai nebijau sušalti.
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						Žadu važiuoti dešimt dienų ir likusias dienas apsistoti Eindhovene iki skrydžio, kuris bus rugsėjo 20 dieną.
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						Į dieną žadu numinti apie 80 km, o nakčiai maksimum išleisti 5 svarus. Pirma stotelė Kembridže, patikrinti kaip sunkiai minasi.
+						Jeigu pavyks per puse dienos, tai leisiu sau daugiau aplankyti vietovių.
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						Žadu palaikyti 20 km/h važiavimo greitį.
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	</div>
+
+	<div style="width: 100%; height: 150vh; background: deeppink"></div>
+	<div style="width: 100%; height: 150vh; background: darkturquoise"></div>
+	</div>
+</body>
+<script>
+</script>
+
+</html>

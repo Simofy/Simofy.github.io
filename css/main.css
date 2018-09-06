@@ -1,96 +1,456 @@
-/* added style */
-#backgroundCanvas{
-  overflow: hidden;
-  position: fixed !important;
-  z-index: -1;
-}
-section{
-  margin-bottom: 10px;
-}
-.banner-area{
-  background-image: -moz-linear-gradient(0deg, #e66587 0%, #f09458 100%);
-  background-image: -webkit-linear-gradient(0deg, #e66587 0%, #f09458 100%);
-  background-image: -ms-linear-gradient(0deg, #e66587 0%, #f09458 100%);
+html, body {
+    background: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-family:Courier;
 }
 
-body:after {
-  position: absolute;
-  content: "";
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  position: fixed ;
-  background-image: -moz-linear-gradient(0deg, #e66587 0%, #f09458 100%);
-  background-image: -webkit-linear-gradient(0deg, #e66587 0%, #f09458 100%);
-  background-image: -ms-linear-gradient(0deg, #e66587 0%, #f09458 100%);
-  opacity: 0.6;
-  z-index: -1;
+::-webkit-scrollbar {
+    display: none;
+}
+
+a {
+    color: inherit;
+    /* blue colors for links too */
+    text-decoration: inherit;
+    /* no underline */
+}
+
+a:hover {
+    color: inherit;
+    /* blue colors for links too */
+    text-decoration: inherit;
+    /* no underline */
+}
+
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+}
+
+#skip_symbol_start {
+    position: absolute;
+    background: red;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    animation-duration: 4s;
+    color: rgb(50, 50, 50);
+    font-size: 32px;
+    background: black;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(135deg, #000000, #000000, #ffffff, #000000, #000000);
+    background-size: 1000% 1000%;
+    -webkit-animation: scroll-down 15s ease infinite;
+    -moz-animation: scroll-down 15s ease infinite;
+    -o-animation: scroll-down 15s ease infinite;
+    animation: scroll-down 15s ease infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.intro_text {
+    width: 100%;
+    text-align: center;
+    padding-top: 20vh;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-bold-text {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+#down_symbol_start, #start_text_fadeout {
+    opacity: 1;
+}
+
+.down-symbol {
+    z-index: 100;
+    animation-name: example;
+    animation-duration: 4s;
+    position: fixed;
+    bottom: 10px;
+    color: rgb(50, 50, 50);
+    -webkit-text-stroke: 1px rgb(50, 50, 50);
+    font-size: 64px;
+    background: black;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(135deg, #000000, #000000, #ffffff, #000000, #000000);
+    background-size: 1000% 1000%;
+    -webkit-animation: scroll-down 15s ease infinite;
+    -moz-animation: scroll-down 15s ease infinite;
+    -o-animation: scroll-down 15s ease infinite;
+    animation: scroll-down 15s ease infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+@-webkit-keyframes scroll-down {
+    0% {
+        background-position: 0% 13%
+    }
+    50% {
+        background-position: 100% 88%
+    }
+    100% {
+        background-position: 0% 13%
+    }
+}
+
+@-moz-keyframes scroll-down {
+    0% {
+        background-position: 0% 13%
+    }
+    50% {
+        background-position: 100% 88%
+    }
+    100% {
+        background-position: 0% 13%
+    }
+}
+
+@-o-keyframes scroll-down {
+    0% {
+        background-position: 0% 13%
+    }
+    50% {
+        background-position: 100% 88%
+    }
+    100% {
+        background-position: 0% 13%
+    }
+}
+
+@keyframes scroll-down {
+    0% {
+        background-position: 0% 13%
+    }
+    50% {
+        background-position: 100% 88%
+    }
+    100% {
+        background-position: 0% 13%
+    }
+}
+
+#intro_bike {
+    background-image: url("https://www.aoicycle.com/wp-content/uploads/2017/08/img_5032-2-1024x768.jpg");
+    min-height: 100vh;
+}
+
+.intro-map {
+    background-image: url("https://i.imgur.com/zriNa21.jpg");
+    min-height: 400px;
+}
+
+#intro_bike {
+    position: relative;
+    opacity: 0.65;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+}
+
+.intro-map, .bgimg-3 {
+    position: relative;
+    opacity: 0.65;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+}
+
+#diary_intro {
+    width: 100%;
+    background: pink;
+}
+
+.text-center-story {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 50vh;
+}
+
+.text-box-story {
+    height: 100vh;
+}
+
+#diary_intro_main_text {
+    height: calc( 100% - 96px * 2);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#diary_intro_text {
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 0;
+    font-size: 48px;
+    font-weight: bold;
+    height: 96px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background: pink;
+}
+
+#intro_desc_text {
+    font-size: 48px;
+    height: 100%;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width:830px) {
+    #intro_desc_text {
+        font-size: 5vw;
+    }
+}
+
+#intro_desc_box {
+    align-content: center;
+    text-align: center;
+    overflow: hidden;
+    height: 20vh;
+    z-index: 10;
+    top: calc( -5vh + 36px );
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+}
+
+#equipment_canvas_sub {
+    width: 100%;
+    height: 150px;
+    background: black;
+    display: none;
+}
+
+#prep_day_description div .row {
+    border-top: 2px dotted;
+    border-bottom: 2px dotted;
+    margin:2px;
+}
+
+#prep_day_description {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 
-body {
-  height: 100%;
-  position: relative; 
-}
-.affix {
-  top:0;
-  width: 100%;
-  z-index: 9999 !important;
-}
-.navbar {
-  margin-bottom: 0px;
-  background-color: red;
+@media only screen and (max-width:500px) {
+    #equipment_canvas {
+        display: none;
+    }
+    #equipment_canvas_sub {
+        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
-.affix ~ .container-fluid {
- position: relative;
- top: 50px;
+@media only screen and (max-width:750px) {
+    #prep_day_intro_box {
+        margin-left: 0;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+    }
+    #backgroundSketch {
+        display: none;
+    }
 }
-#intro_header {
-  height:50px;
-  
-  background-image: linear-gradient(90deg, rgba(230,101,135, 0.6) 0%,rgba(240,148,88, 0.6) 100%);
+
+#prep_day_intro_box {
+    /* 
+    height: 300px !important;
+    margin-left: calc( ( 100vw - 750px) / 2); */
+    max-width: 750px;
+    position: absolute;
+    width: 100%;
+    height: 300px !important;
+    background: black;
 }
-#dt1 {
-  background: #B8C1C8;
-  border-bottom: 1px solid #989EA4;
-  border-top: 1px solid #717D85;
-  color: #FFF;
-  margin: 0;
-  padding: 2px 0 0 12px;
-  position: -webkit-sticky;
-  position: sticky;
-  top: -1px;
-}
-.custom-toggler.navbar-toggler {
-  border-color: rgb(255,102,203);
-}
-.custom-toggler .navbar-toggler-icon {
-background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-#navbarContent{
-  
-}
-@media all and (max-width: 480px) {
-  #introText {
-    font-size: 8vw; 
-  }
-}
-#footer {
-  position:absolute !important;
-  bottom:0;
-  width:100%;
-  height:60px;   /* Height of the footer */
-  background:#6cf;
-}
-/* 
-@media all and (max-width: 440px) {
-  #introText {
-      font-size: 2.0em; 
-  }
-} */
+
 #backgroundSketch {
-  
- 
+    width: 100%;
+    height: 300px !important;
+    background: rgb(102, 102, 153)
+}
+
+#prep_day_intro_text {
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 24px;
+    font-size: 48px;
+}
+
+#recomendation_menu {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100% !important;
+    height: 24px !important
+}
+
+.center {
+    width: 800px;
+    max-width: 800px;
+    height: 100%;
+    position: relative;
+    justify-content: center;
+    margin: auto;
+    background-color: unset;
+}
+
+@media only screen and (max-width:900px) {
+    .center {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+#diary_intro_story_box_icon {
+    height: 64px;
+    width: 64px;
+    font-size: 64px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#d_intro_left, #d_intro_right {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    text-justify: auto;
+    text-align: center;
+    width: auto
+}
+
+#diary_intro_story_box {
+    background-image: pink;
+    background-image: linear-gradient(0, pink, transparent);
+    width: 100%;
+    height: 96px;
+    position: sticky;
+    bottom: 0;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#menuBar {
+    overflow: auto;
+    z-index: 50;
+    height: 40px;
+    width: 100%;
+    padding: 0px;
+    margin-bottom: 0px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-flow: column;
+    text-align: center
+}
+
+.menuSmooth {
+    user-select: none;
+    background-color: inherit;
+    position: sticky;
+    top: 0;
+}
+
+.menuSmooth nav ul li a i {
+    font-size: 20px;
+    margin: 3px;
+}
+
+@media only screen and (max-width:450px) {
+    .menuSmooth nav ul li a span {
+        display: none;
+    }
+}
+
+.menuSmooth ul {
+    background-color: inherit;
+    position: relative;
+    top: 0;
+    z-index: 100;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.menuSmooth ul li {
+    display: inline-block;
+    background-color: inherit;
+    padding: 0 7px 0 5px;
+}
+
+#equipment_canvas {
+    height: calc( 100vw * ( 3 / 7));
+    /* let size_x = parent.width() * (10 / 7)
+    sketch.resizeCanvas(parent.width(), size_x * (3 / 10)); */
+    /* overflow: hidden;
+    position: fixed !important;
+    top: 0 !important;
+    width: 200px !important;
+    height: 200px !important; */
+}
+
+.menuSmooth ul li a {
+    background-color: inherit;
+    display: block;
+    line-height: 40px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 400;
+    outline: none;
+    padding: 0 5px 0 5px;
+}
+
+* html .menuSmooth ul li a {
+    /*IE6 hack to get sub menu links to behave correctly*/
+    display: inline-block;
+}
+
+.menuSmooth ul li a:hover {
+    background-color: rgb(215, 152, 163);
+    text-indent: 0;
+    transition: all 0.2s;
+    opacity: 1;
 }

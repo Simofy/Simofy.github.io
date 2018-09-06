@@ -34,7 +34,8 @@ function compare(a, b) {
     return comparison;
 }
 
-function inside(point, vs, offset) {
+function inside(point, vs, offset, scale) {
+    if(scale == undefined)scale = 1;
     // ray-casting algorithm based on
     // http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
     let x = point.x,
@@ -42,10 +43,10 @@ function inside(point, vs, offset) {
 
     let inside = false;
     for (let i = 0, j = vs.length - 1; i < vs.length; j = i++) {
-        let xi = vs[i].p.x + offset.x,
-            yi = vs[i].p.y + offset.y;
-        let xj = vs[j].p.x + offset.x,
-            yj = vs[j].p.y + offset.y;
+        let xi = (vs[i].p.x + offset.x)*scale,
+            yi = (vs[i].p.y + offset.y)*scale;
+        let xj = (vs[j].p.x + offset.x)*scale,
+            yj = (vs[j].p.y + offset.y)*scale;
 
         let intersect = ((yi > y) != (yj > y)) &&
             (x < (xj - xi) * (y - yi) / (yj - yi) + xi);

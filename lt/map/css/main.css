@@ -1,0 +1,84 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: black;
+    color: white;
+}
+
+#map {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 50;
+}
+
+#back_symbol {
+    font-size: 22px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 150;
+    color: rgb(50, 50, 50);
+    -webkit-text-stroke: 1px rgb(50, 50, 50);
+    background: black;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(135deg, #000000, #000000, #ffffff, #000000, #000000);
+    background-size: 1000% 1000%;
+    -webkit-animation: scroll-down 15s ease infinite;
+    -moz-animation: scroll-down 15s ease infinite;
+    -o-animation: scroll-down 15s ease infinite;
+    animation: scroll-down 15s ease infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+@-webkit-keyframes scroll-down {
+    0% {
+        background-position: 0% 13%
+    }
+    50% {
+        background-position: 100% 88%
+    }
+    100% {
+        background-position: 0% 13%
+    }
+}
+
+@-moz-keyframes scroll-down {
+    0% {
+        background-position: 0% 13%
+    }
+    50% {
+        background-position: 100% 88%
+    }
+    100% {
+        background-position: 0% 13%
+    }
+}
+
+@-o-keyframes scroll-down {
+    0% {
+        background-position: 0% 13%
+    }
+    50% {
+        background-position: 100% 88%
+    }
+    100% {
+        background-position: 0% 13%
+    }
+}
+
+@keyframes scroll-down {
+    0% {
+        background-position: 0% 13%
+    }
+    50% {
+        background-position: 100% 88%
+    }
+    100% {
+        background-position: 0% 13%
+    }
+}

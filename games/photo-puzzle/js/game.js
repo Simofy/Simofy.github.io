@@ -1,5 +1,6 @@
 var options = {
 	complete: 0,
+	scale:5.0,
 	base_image_url: "",
 	base_image_number: "",
 	game: {
@@ -32,205 +33,209 @@ var jigsawOffset = {};
 var whichGroup = -1;
 var endGame = false;
 let customImage = undefined;
-if (OSName == "Windows" || OSName == "MacOS")
+//if (OSName == "Windows" || OSName == "MacOS")
 function preload() {
-	if (OSName == "Windows" || OSName == "MacOS") {
 
-		var xhr = new XMLHttpRequest();
-		let definedUrl = getUrlParameter("image");
-		if (definedUrl == undefined) definedUrl = 'https://picsum.photos/' + options.game.w + '/' + options.game.h + '/?random';
-		else
-			definedUrl = 'https://picsum.photos/' + options.game.w + '/' + options.game.h + '/?image=' + definedUrl;
+	var xhr = new XMLHttpRequest();
+	let definedUrl = getUrlParameter("image");
+	if (definedUrl == undefined) definedUrl = 'https://picsum.photos/' + options.game.w + '/' + options.game.h + '/?random';
+	else
+		definedUrl = 'https://picsum.photos/' + options.game.w + '/' + options.game.h + '/?image=' + definedUrl;
 
-		customImage = getUrlParameter("custom");
-		if (customImage != undefined) {
-			definedUrl = customImage;
-			definedUrl = definedUrl.split('"')[1];
-		}
-		console.log(definedUrl)
-		xhr.open('GET', definedUrl, true);
-		xhr.onload = function () {
-			base_image = new Image();
-			base_image.setAttribute('crossOrigin', '');
-			let customUrl =
-				base_image.src = xhr.responseURL;
-			options.base_image_number = customUrl.split('=').pop();
-			options.base_image_url = customUrl;
-			base_image.onload = function () {
+	customImage = getUrlParameter("custom");
+	if (customImage != undefined) {
+		definedUrl = customImage;
+		definedUrl = definedUrl.split('"')[1];
+	}
+	console.log(definedUrl)
+	xhr.open('GET', definedUrl, true);
+	xhr.onload = function () {
+		base_image = new Image();
+		base_image.setAttribute('crossOrigin', '');
+		let customUrl =
+			base_image.src = xhr.responseURL;
+		options.base_image_number = customUrl.split('=').pop();
+		options.base_image_url = customUrl;
+		base_image.onload = function () {
 
-				console.log(this.width + " " +this.height);
-				options.game.w = this.width;
-				options.game.h = this.height;
-				var canvas_ = document.getElementById('game-sketch-canvas');
-				context = canvas_.getContext('2d');
-				context.drawImage(base_image, 0, 0);
-				images.main.push(get(0, 0, options.game.w, options.game.h));
+			console.log(this.width + " " + this.height);
+			options.game.w = this.width;
+			options.game.h = this.height;
+			var canvas_ = document.getElementById('game-sketch-canvas');
+			context = canvas_.getContext('2d');
+			context.drawImage(base_image, 0, 0);
+			let image_main = get(0, 0, options.game.w, options.game.h);
+			console.log(image_main)
+			//image_main.resize(options.game.w * options.scale,options.game.h * options.scale);
+			images.main.push(image_main);
+			
+
+
+			var randomSites = function (n, clear, data) {
+				if (clear) {
+					data.sites = [];
+				}
+				var xo = data.margin;
+				var dx = data.bbox.xr - data.margin * 2;
+				var yo = data.margin;
+				var dy = data.bbox.yb - data.margin * 2;
+				for (var i = 0; i < n; i++) {
+					data.sites.push({
+						x: Math.round(xo + Math.random() * dx),
+						y: Math.round(yo + Math.random() * dy)
+					});
+				}
+				data.diagram = data.voronoi.compute(data.sites, data.bbox);
+			};
+			randomSites(options.game.sites, true, VoronoiData);
 
 
 
-				var randomSites = function (n, clear, data) {
-					if (clear) {
-						data.sites = [];
-					}
-					var xo = data.margin;
-					var dx = data.bbox.xr - data.margin * 2;
-					var yo = data.margin;
-					var dy = data.bbox.yb - data.margin * 2;
-					for (var i = 0; i < n; i++) {
-						data.sites.push({
-							x: Math.round(xo + Math.random() * dx),
-							y: Math.round(yo + Math.random() * dy)
-						});
-					}
-					data.diagram = data.voronoi.compute(data.sites, data.bbox);
+			let puzzlePiecesUnsorted = [];
+			let countBezierId = 0;
+			VoronoiData.diagram.edges.forEach(edge => {
+				let shapeLine = {
+					lSite: edge.lSite,
+					rSite: edge.rSite,
+					bezier: null
 				};
-				randomSites(options.game.sites, true, VoronoiData);
-				
-
-
-				let puzzlePiecesUnsorted = [];
-				let countBezierId = 0;
-				VoronoiData.diagram.edges.forEach(edge => {
-					let shapeLine = {
-						lSite: edge.lSite,
-						rSite: edge.rSite,
-						bezier: null
+				let l = edge;
+				lv = {
+					x: l.va.x - l.vb.x,
+					y: l.va.y - l.vb.y
+				};
+				let length = Math.sqrt(lv.x * lv.x + lv.y * lv.y);
+				if (l.lSite != null && l.rSite != null) {
+					let dir = random([0, 1]);
+					shapeLine.bezier = {
+						halfPoint: {
+							x: (l.va.x + l.vb.x) / 2,
+							y: (l.va.y + l.vb.y) / 2
+						},
+						theta_radians: dir == 0 ? PI / 2 - Math.atan2(l.va.x - l.vb.x, l.vb.y - l.va.y) : PI / 2 - Math.atan2(l.va.x - l.vb.x, l.vb.y - l.va.y) + PI,
+						bezierW: length > 50 ? 20 : length / 5,
+						bezierH: length > 50 ? 10 : length / 5,
+						bezierId: countBezierId++,
+						dir: random([0, 1])
 					};
-					let l = edge;
-					lv = {
-						x: l.va.x - l.vb.x,
-						y: l.va.y - l.vb.y
+
+				}
+				puzzlePiecesUnsorted.push(shapeLine);
+			});
+			VoronoiData.diagram.cells.forEach(site => {
+				let obj = [];
+				site.halfedges.forEach(site_line => {
+
+					let compareL = site_line.edge;
+
+					site_line.bezier = null;
+					let p_0_bary = Math.atan2(compareL.va.y - site.site.y, compareL.va.x - site.site.x);
+					let p_1_bary = Math.atan2(compareL.vb.y - site.site.y, compareL.vb.x - site.site.x);
+					let realVa = {
+						x: site_line.edge.va.x - site.site.x,
+						y: site_line.edge.va.y - site.site.y
 					};
-					let length = Math.sqrt(lv.x * lv.x + lv.y * lv.y);
-					if (l.lSite != null && l.rSite != null) {
-						let dir = random([0, 1]);
-						shapeLine.bezier = {
-							halfPoint: {
-								x: (l.va.x + l.vb.x) / 2,
-								y: (l.va.y + l.vb.y) / 2
-							},
-							theta_radians: dir == 0 ? PI / 2 - Math.atan2(l.va.x - l.vb.x, l.vb.y - l.va.y) : PI / 2 - Math.atan2(l.va.x - l.vb.x, l.vb.y - l.va.y) + PI,
-							bezierW: length > 50 ? 20 : length / 5,
-							bezierH: length > 50 ? 10 : length / 5,
-							bezierId: countBezierId++,
-							dir: random([0, 1])
-						};
-		
-					}
-					puzzlePiecesUnsorted.push(shapeLine);
-				});
-				VoronoiData.diagram.cells.forEach(site => {
-					let obj = [];
-					site.halfedges.forEach(site_line => {
-		
-						let compareL = site_line.edge;
-		
-						site_line.bezier = null;
-						let p_0_bary = Math.atan2(compareL.va.y - site.site.y, compareL.va.x - site.site.x);
-						let p_1_bary = Math.atan2(compareL.vb.y - site.site.y, compareL.vb.x - site.site.x);
-						let realVa = {
-							x: site_line.edge.va.x - site.site.x,
-							y: site_line.edge.va.y - site.site.y
-						};
-						obj.push({
-							center: site.site,
-							p: realVa, //site_line.edge.va,
-							isBezier: false,
-							baryOrder: p_0_bary
-						});
-		
-						let halfPoint = {
-							x: (compareL.va.x + compareL.vb.x) / 2,
-							y: (compareL.va.y + compareL.vb.y) / 2
-						};
-						//site_line.baryOrder = ;
-						if (compareL.lSite != null && compareL.rSite != null)
-							for (let i = 0; i < puzzlePiecesUnsorted.length; i++) {
-								line = puzzlePiecesUnsorted[i];
-								if (line.lSite != null && line.rSite != null && line.bezier != null)
-									if (compareL.lSite.voronoiId == line.lSite.voronoiId &&
-										compareL.rSite.voronoiId == line.rSite.voronoiId) {
-										site_line.bezier = line.bezier;
-										let realh = {
-											x: halfPoint.x - site.site.x,
-											y: halfPoint.y - site.site.y
-										};
-										obj.push({
-											center: site.site,
-											p: realh, //halfPoint,
-											isBezier: true,
-											bezier: line.bezier,
-											baryOrder: Math.atan2(halfPoint.y - site_line.site.y, halfPoint.x - site_line.site.x)
-										});
-										break;
-									}
-		
-							}
-						let realVb = {
-							x: site_line.edge.vb.x - site.site.x,
-							y: site_line.edge.vb.y - site.site.y
-						};
-		
-						obj.push({
-							center: site.site,
-							p: realVb, //site_line.edge.vb,
-							isBezier: false,
-							baryOrder: p_1_bary
-						});
+					obj.push({
+						center: site.site,
+						p: realVa, //site_line.edge.va,
+						isBezier: false,
+						baryOrder: p_0_bary
 					});
-		
-					puzzlePieces.push({
-						edge: obj
+
+					let halfPoint = {
+						x: (compareL.va.x + compareL.vb.x) / 2,
+						y: (compareL.va.y + compareL.vb.y) / 2
+					};
+					//site_line.baryOrder = ;
+					if (compareL.lSite != null && compareL.rSite != null)
+						for (let i = 0; i < puzzlePiecesUnsorted.length; i++) {
+							line = puzzlePiecesUnsorted[i];
+							if (line.lSite != null && line.rSite != null && line.bezier != null)
+								if (compareL.lSite.voronoiId == line.lSite.voronoiId &&
+									compareL.rSite.voronoiId == line.rSite.voronoiId) {
+									site_line.bezier = line.bezier;
+									let realh = {
+										x: halfPoint.x - site.site.x,
+										y: halfPoint.y - site.site.y
+									};
+									obj.push({
+										center: site.site,
+										p: realh, //halfPoint,
+										isBezier: true,
+										bezier: line.bezier,
+										baryOrder: Math.atan2(halfPoint.y - site_line.site.y, halfPoint.x - site_line.site.x)
+									});
+									break;
+								}
+
+						}
+					let realVb = {
+						x: site_line.edge.vb.x - site.site.x,
+						y: site_line.edge.vb.y - site.site.y
+					};
+
+					obj.push({
+						center: site.site,
+						p: realVb, //site_line.edge.vb,
+						isBezier: false,
+						baryOrder: p_1_bary
 					});
 				});
-				let i = 0;
-				puzzlePieces.forEach(site => {
-					site.edge.sort(compare);
-					let centerPoint = {
-						x: 0,
-						y: 0
-					};
-		
-		
-					site.edge.forEach(fac => {
-						centerPoint.x += fac.p.x;
-						centerPoint.y += fac.p.y;
-					});
-					centerPoint.x /= site.edge.length;
-					centerPoint.y /= site.edge.length;
-					site.centerPoint = centerPoint;
-					site.origin = {
-						x: 0,
-						y: 0
-					};
-					site.origin.x = random(100, width - 100); //site[0].edge[0].center.x;
-					site.origin.y = random(100, height - 100); //site[0].edge[0].center.y;
-					site.groupId = i++;
-					site.voronoiId = site.edge[0].center.voronoiId;
-		
-				});
 
-				options.complete = 1;
-				background(102, 102, 153);
-			}
-		};
-		xhr.send(null);
-	}
+				puzzlePieces.push({
+					edge: obj
+				});
+			});
+			let i = 0;
+			puzzlePieces.forEach(site => {
+				site.edge.sort(compare);
+				let centerPoint = {
+					x: 0,
+					y: 0
+				};
+
+
+				site.edge.forEach(fac => {
+					centerPoint.x += fac.p.x;
+					centerPoint.y += fac.p.y;
+				});
+				centerPoint.x /= site.edge.length;
+				centerPoint.y /= site.edge.length;
+				site.centerPoint = centerPoint;
+				site.origin = {
+					x: 0,
+					y: 0
+				};
+				site.origin.x = random(100, width - 100); //site[0].edge[0].center.x;
+				site.origin.y = random(100, height - 100); //site[0].edge[0].center.y;
+				site.groupId = i++;
+				site.voronoiId = site.edge[0].center.voronoiId;
+
+			});
+
+			options.complete = 1;
+			background(102, 102, 153);
+		}
+	};
+	xhr.send(null);
+
 }
-if (OSName == "Windows" || OSName == "MacOS")
-	window.onresize = function () {
-		resizeCanvas(windowWidth, windowHeight);
-		graphic.remove();
-		graphic = createGraphics(width, height, WEBGL);
-	}
+//if (OSName == "Windows" || OSName == "MacOS")
+window.onresize = function () {
+	resizeCanvas(windowWidth, windowHeight);
+	graphic.resizeCanvas(windowWidth, windowHeight);
+	//graphic.remove();
+	//graphic = createGraphics(width, height, WEBGL);
+}
 
 function setup() {
 
 	canvas = createCanvas(windowWidth, windowHeight);
-	if (OSName == "Windows" || OSName == "MacOS") {
+	//if (OSName == "Windows" || OSName == "MacOS") 
+	{
 		graphic = createGraphics(width, height, WEBGL);
 		graphic.show();
-		graphic.pixelDensity(pixelDensity());
+		graphic.pixelDensity(1);
 		canvas.parent('game-sketch');
 		canvas.id('game-sketch-canvas');
 
@@ -257,11 +262,12 @@ function draw() {
 		textSize(32);
 		fill(255)
 		translate(width / 2, height / 2);
+		//scale(options.scale);
 		textAlign(CENTER);
-		if (OSName == "Windows" || OSName == "MacOS")
-			text('Loading...', 0, 0);
-		else
-			text('Mobile phones not yet supported.', 0, 0);
+		//if (OSName == "Windows" || OSName == "MacOS")
+		text('Loading...', 0, 0);
+		//else
+		//	text('Mobile phones not yet supported.', 0, 0);
 		pop();
 	} else {
 		if (onlyOnceExc == 0) {
@@ -270,6 +276,7 @@ function draw() {
 		}
 		graphic.push();
 		graphic.translate(-width / 2, -height / 2);
+		//graphic.scale(options.scale);
 		graphic.background(102, 102, 153);
 		background(102, 102, 153);
 		if (mouseIsPressed) {
@@ -281,7 +288,7 @@ function draw() {
 						let isInside = inside({
 							x: mouseX,
 							y: mouseY
-						}, puzzlePieces[i].edge, puzzlePieces[i].origin);
+						}, puzzlePieces[i].edge, puzzlePieces[i].origin,1);
 						if (isInside) {
 							whichGroup = puzzlePieces[i].groupId;
 							break;
@@ -332,8 +339,8 @@ function draw() {
 				if (whichGroup != -1) {
 					puzzlePieces.forEach(element => {
 						if (element.groupId == whichGroup) {
-							element.origin.x = mouseX + jigsawOffset[element.voronoiId].x;
-							element.origin.y = mouseY + jigsawOffset[element.voronoiId].y;
+							element.origin.x = (mouseX + jigsawOffset[element.voronoiId].x);
+							element.origin.y = (mouseY + jigsawOffset[element.voronoiId].y);
 						}
 					});
 					if (!endGame)
@@ -412,6 +419,7 @@ function draw() {
 			graphic.push();
 
 			graphic.translate(cell.origin.x, cell.origin.y);
+			//graphic.scale(options.scale);
 			graphic.fill(0);
 			graphic.texture(images.main[0]);
 			graphic.beginShape(TRIANGLE_FAN);
@@ -538,6 +546,7 @@ function draw() {
 				graphic.stroke(0);
 				graphic.strokeWeight(2);
 				graphic.translate(quickOverlay.origin.x, quickOverlay.origin.y);
+				//graphic.scale(options.scale);
 				graphic.beginShape();
 				quickOverlay.wireFrame.forEach(p => {
 					graphic.vertex(p.x, p.y);
@@ -566,7 +575,7 @@ function loadEndGameScreen() {
 	$("#iframeEndGame")[0].src = linkSrc;
 	$("#linkImageEndGame")[0].href = options.base_image_url;
 	$("#linkSameEndGame")[0].href = "/games/photo-puzzle/puzzle.html?selecteddifficulty=" + $("#puzzlePiecesSlider")[0].value + "&image=" + options.base_image_number;
-	if(customImage != undefined)$("#linkSameEndGame")[0].href += "&custom=\""+customImage+"\"";
+	if (customImage != undefined) $("#linkSameEndGame")[0].href += "&custom=\"" + customImage + "\"";
 }
 $(document).ready(function () {
 
@@ -575,8 +584,8 @@ $(document).ready(function () {
 	$("#puzzlePiecesSlider")[0].oninput = function () {
 		$("#puzzlePiecesValue")[0].innerHTML = this.value;
 		$("#linkSameEndGame")[0].href = "/games/photo-puzzle/puzzle.html?selecteddifficulty=" + $("#puzzlePiecesSlider")[0].value + "&image=" + options.base_image_number;
-		if(customImage != undefined)$("#linkSameEndGame")[0].href += "&custom="+customImage;
-	
+		if (customImage != undefined) $("#linkSameEndGame")[0].href += "&custom=" + customImage;
+
 	}
 	$("#button").click(function (e) {
 		event.preventDefault();

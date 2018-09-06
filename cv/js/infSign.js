@@ -30,10 +30,10 @@ $(document).ready(function(){
     };
     var infSketch = function(){
         this.scale = stage.width() / test;
-        this.size = 40;
+        this.size = 140;
         this.colorArray = [];
         this.shapeArray = [];
-        this.step = 0.04;
+        this.step = 0.03;
         this.time = 0.0;
         this.layer = stage.layer();
         //x = cos t , y = sin t * cos t
@@ -62,8 +62,8 @@ $(document).ready(function(){
         this.colorArray.shift();
         this.colorArray.push({r:r_, g:g_, b:b_});
         let start = getPos(this.time + this.step);
-        let end = getPos(this.time - (this.size-1) * this.step);
-        //let end = getPos(this.time);
+        //let end = getPos(this.time - (this.size-1) * this.step);
+        let end = getPos(this.time);
         //let last = 
         for (var a = 1; a < this.size; a++) {
             let pos = getPos(this.time - a * this.step);
@@ -75,8 +75,8 @@ $(document).ready(function(){
             linePath.lineTo(start[0]*this.scale + stage.width() / 2, start[1]*this.scale + stage.height() / 2);
             linePath.fill("rgb("+c.r+","+c.g+","+c.b+")");
             linePath.stroke('none');
-            //end = getPos(this.time - (a) * this.step);
-            //start = getPos(this.time - (a+20) * this.step );
+            end = getPos(this.time - (a) * this.step);
+            start = getPos(this.time - (a+20) * this.step );
             linePath.close();
         }
         stage.resume();
@@ -100,12 +100,12 @@ $(document).ready(function(){
     // window.addEventListener('resize', function(){
     //     infSign.windowResized();
     //   }, true);
-    // window.addEventListener('mousedown', function(){
-    // animate = true;
-    // }, true);
-    // window.addEventListener('mouseup', function(){
-    //     animate = false;
-    //     }, true);
+    window.addEventListener('mousedown', function(){
+    animate = true;
+    }, true);
+    window.addEventListener('mouseup', function(){
+        animate = false;
+        }, true);
 
 
 });
