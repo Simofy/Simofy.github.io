@@ -2,7 +2,7 @@ html, body {
     background: black;
     color: white;
     font-family: 'Courier New', Courier, monospace;
-    font-family:Courier;
+    font-family: Courier;
 }
 
 ::-webkit-scrollbar {
@@ -137,9 +137,76 @@ a:hover {
     }
 }
 
+#day_01_01_img {
+    background-image: url("C:/Users/julsi/Desktop/manoHTML/day_01_01.jpg");
+}
+
+#day_01_02_img {
+    background-image: url("C:/Users/julsi/Desktop/manoHTML/day_01_02.jpg");
+}
+
+#day_01_03_img {
+    background-image: url("C:/Users/julsi/Desktop/manoHTML/day_01_03.jpg");
+}
+
+#day_01_04_img {
+    background-image: url("C:/Users/julsi/Desktop/manoHTML/day_01_04.jpg");
+}
+
+#day_01_story_box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1600px;
+    width: 100%;
+    justify-content: center;
+    
+
+}
+@media only screen and (max-width:450px) {
+    .day_01_story_text {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+    }
+}
+.day_01_story_text {
+    text-align: center;
+    margin-top:164px;
+    margin-left: calc( ( 100vw - 400px ) / 2 );
+    margin-right: calc( ( 100vw - 400px ) / 2 );
+    width: 400px;
+    height: 36px;
+    background: black;
+}
+
+.day_01_image_scroll {
+    min-height: 400px;
+    position: relative;
+    opacity: 0.8;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+}
+
 #intro_bike {
     background-image: url("https://www.aoicycle.com/wp-content/uploads/2017/08/img_5032-2-1024x768.jpg");
     min-height: 100vh;
+}
+
+#sunset_intro {
+    background-image: url("C:/Users/julsi/Desktop/manoHTML/sunset.jpg");
+    min-height: 100vh;
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .intro-map {
@@ -160,7 +227,7 @@ a:hover {
     transition: opacity 1s ease-in-out;
 }
 
-.intro-map, .bgimg-3 {
+.intro-map {
     position: relative;
     opacity: 0.65;
     background-attachment: fixed;
@@ -216,7 +283,7 @@ a:hover {
     background: pink;
 }
 
-#intro_desc_text {
+#intro_desc_text, #day_01_intro_text {
     font-size: 48px;
     height: 100%;
     text-transform: uppercase;
@@ -237,10 +304,18 @@ a:hover {
     overflow: hidden;
     height: 20vh;
     z-index: 10;
-    top: calc( -5vh + 36px );
+    top: calc( -5vh + 36px);
     position: -webkit-sticky;
     /* Safari */
     position: sticky;
+}
+
+#day_01_intro_box {
+    align-content: center;
+    text-align: center;
+    overflow: hidden;
+    height: 20vh;
+    background: black;
 }
 
 #equipment_canvas_sub {
@@ -253,7 +328,7 @@ a:hover {
 #prep_day_description div .row {
     border-top: 2px dotted;
     border-bottom: 2px dotted;
-    margin:2px;
+    margin: 2px;
 }
 
 #prep_day_description {
@@ -263,7 +338,6 @@ a:hover {
     align-items: center;
     text-align: center;
 }
-
 
 @media only screen and (max-width:500px) {
     #equipment_canvas {

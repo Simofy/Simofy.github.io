@@ -1,5 +1,5 @@
 var names = ['Energy', 'Will', 'Pain', 'Fun'];
-var data = [100, 90, 10, 80];
+var data = [75, 80, 10, 81];
 var dataSet = anychart.data.set(data);
 var palette = anychart.palettes.distinctColors().items(['#65FF33', '#D1FF33', '#FF5733', '#FF98D5']);
 
@@ -38,6 +38,11 @@ var makeBarWithBar = function(gauge, radius, i, width, without_stroke) {
 };
 
 anychart.onDocumentReady(function() {
+
+
+$("#stat_total_km").text(5 + ' km');
+$("#stat_total_gb").text(5 + ' gbp');
+
   var gauge = anychart.gauges.circular();
   gauge.background().fill("black");
   
