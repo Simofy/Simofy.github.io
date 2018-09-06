@@ -138,19 +138,19 @@ a:hover {
 }
 
 #day_01_01_img {
-    background-image: url("C:/Users/julsi/Desktop/manoHTML/day_01_01.jpg");
+    background-image: url("https://i.imgur.com/1KzWz7B.jpg");
 }
 
 #day_01_02_img {
-    background-image: url("C:/Users/julsi/Desktop/manoHTML/day_01_02.jpg");
+    background-image: url("https://i.imgur.com/XhJDPoL.jpg");
 }
 
 #day_01_03_img {
-    background-image: url("C:/Users/julsi/Desktop/manoHTML/day_01_03.jpg");
+    background-image: url("https://i.imgur.com/YHjLiMw.jpg");
 }
 
 #day_01_04_img {
-    background-image: url("C:/Users/julsi/Desktop/manoHTML/day_01_04.jpg");
+    background-image: url("https://i.imgur.com/g5OYddh.jpg");
 }
 
 #day_01_story_box {
@@ -200,7 +200,7 @@ a:hover {
 }
 
 #sunset_intro {
-    background-image: url("C:/Users/julsi/Desktop/manoHTML/sunset.jpg");
+    background-image: url("https://i.imgur.com/RsJHssK.jpg");
     min-height: 100vh;
     position: relative;
     background-attachment: fixed;
