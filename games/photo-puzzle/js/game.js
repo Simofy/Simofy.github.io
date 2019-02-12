@@ -68,7 +68,7 @@ function preload() {
 			console.log(image_main)
 			//image_main.resize(options.game.w * options.scale,options.game.h * options.scale);
 			images.main.push(image_main);
-			
+
 
 
 			var randomSites = function (n, clear, data) {
@@ -221,19 +221,15 @@ function preload() {
 
 }
 //if (OSName == "Windows" || OSName == "MacOS")
-window.onresize = function () {
-	resizeCanvas(windowWidth, windowHeight);
-	graphic.resizeCanvas(windowWidth, windowHeight);
-	//graphic.remove();
-	//graphic = createGraphics(width, height, WEBGL);
-}
+
+// windowWidth = window.outerWidth;
+// windowHeight = window.outerHeight;
 
 function setup() {
-
 	canvas = createCanvas(windowWidth, windowHeight);
 	//if (OSName == "Windows" || OSName == "MacOS") 
 	{
-		graphic = createGraphics(width, height, WEBGL);
+		graphic = createGraphics(windowWidth, windowHeight, WEBGL);
 		graphic.show();
 		graphic.pixelDensity(1);
 		canvas.parent('game-sketch');
@@ -251,6 +247,7 @@ function setup() {
 
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
+	graphic.resizeCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
@@ -304,7 +301,7 @@ function draw() {
 									y: element.origin.y - mouseY
 								};
 
-
+								
 							}
 
 						});
@@ -325,10 +322,6 @@ function draw() {
 						}
 
 
-						// jigsawOffset.x = puzzlePieces[whichGroup].origin.x;
-						// jigsawOffset.y = puzzlePieces[whichGroup].origin.y;
-						// jigsawOffset.x -= mouseX;
-						// jigsawOffset.y -= mouseY;
 
 					} else {
 						jigsawOffset = {};

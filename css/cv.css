@@ -1,0 +1,303 @@
+/* CSS Reset: http://meyerweb.com/eric/tools/css/reset */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#body{
+    font-family: roboto, sans-serif;
+    color: #415161;
+}
+
+p {
+    font-size: 20px;
+    line-height: 34px;
+}
+
+a {
+    text-decoration: none;
+    border-bottom: 1px solid #a4dfce;
+    /*color: #09c;*/
+    color: #49bf9d;
+}
+
+a:visited {
+    text-decoration: none;
+    border-bottom: 1px solid #a4dfce;
+    color: #49bf9d;
+}
+
+a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid #a4dfce;
+    text-decoration-color: none;
+}
+
+i {
+    font-style: italic;
+}
+
+h1 {
+    font-size: 28px;
+    line-height: 44px;
+    width: 100%;
+    text-align: center;
+    margin: 30px auto;
+}
+
+#header {
+    height: 120px;
+    text-align: center;
+    line-height: 120px;
+    border-bottom: 1px solid #ddd;
+    font-size: 52px;
+}
+
+#main {
+    width: 960px;
+    margin: 0px auto;
+}
+
+#profile {
+    padding: 40px 0px 40px 90px;
+    border-bottom: 1px solid #ddd;
+    height: 240px;
+}
+
+#profile div {
+    margin-right: 40px; 
+    border-radius: 50%;
+    float: left;
+    height: 240px;
+    width: 240px;
+    box-sizing: border-box;
+    background-image: url("https://i.imgur.com/18j2t9O.jpg?1");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+}
+#profile  > p > a{
+    margin: 0 10px 0 10px;
+}
+#profile p {
+    margin-top: 20px;
+}
+
+.recent-work {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.highlight-proj {
+    width: 31%;
+    margin: 0% 1%;
+    float: left;
+}
+
+.highlight-proj p {
+    font-size: 16px;
+    line-height: 26px;
+    color: #a0a8b0;
+    margin-bottom: 30px;
+}
+
+
+.divider {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+}
+
+ul {
+    font-size: 20px;
+    line-height: 34px;
+    list-style-position: inside;
+    list-style-type: disc;
+    margin-bottom: 30px;
+    color: #a0a8b0;
+}
+
+.research {
+    padding-bottom: 30px;
+}
+
+.research p {
+    color: #a0a8b0;
+    margin-top: 10px;
+}
+
+.research-proj {
+    margin-top: 40px;
+    width: 100%;
+    clear: both;
+    content: "";
+    display: table;
+
+}
+
+.research-thumb {
+    width: 36%;
+    float: left;
+    margin-top: 10px;
+    border-bottom: none;
+}
+
+.research-thumb img {
+    width: 100%;
+    border: 2px solid #415161;
+}
+
+.research-proj h2 {
+    width: 61%;
+    margin-left: 3%;
+    float: right;
+    color: #415161;
+    font-size: 20px;
+    line-height: 34px;
+}
+
+.research-proj p {
+    width: 61%;
+    margin-left: 3%;
+    float: right;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+#footer p {
+    width: 100%;
+    margin-top: 120px;
+    color: #a0a8b0;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+
+.demo-img {
+    border-radius: 8px;
+    margin-bottom: 16px;
+    width: 100%;
+    height: 150px;
+    padding-bottom: 25%;
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+
+.demo-game{
+    background-image: url("https://i.imgur.com/EGbA5SR.gif");
+  }
+  .demo-ui{
+    background-image: url("https://i.imgur.com/9gw9OG1l.png");
+  }
+  .demo-inf{
+    background-image: url("https://i.imgur.com/RwvKRAK.gif");
+  }
+  .demo-tree{
+    background-image: url("https://i.imgur.com/goH6BGem.png");
+  }
+  .demo-puzzle{
+    background-image: url("https://i.imgur.com/kECgYwwm.png");
+  }
+  .demo-evolution{
+    background-image: url("https://i.imgur.com/pOTA75A.gif");
+  }
+  .demo-diary{
+    background-image: url("https://i.imgur.com/EaE3GxAm.png");
+  }
+  .demo-turf{
+    background-image: url("https://i.imgur.com/kt1TXkwm.png");
+  }
+  .demo-pro{
+    background-image: url("https://i.imgur.com/fOv3Syzm.png");
+  }
+
+
+  .circle {
+    margin: 2px;
+    display: inline-block;
+    
+  }
+  .circle-45px{
+    width: 45px;
+    height: 45px;
+    border-radius: 45px;
+    background: cornflowerblue;
+  }
+  .circle-30px{
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background: crimson;
+  }
+  .circle-25px{
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    background: goldenrod;
+  }
+  .text-circle{
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    display: inline-block;
+  }
+.atribute-style{
+    width: 100%;
+    text-align: center;
+    position: relative;
+}   
+.atribute-style ul{
+    list-style-position: outside;
+    display: inline-block;
+    width: auto !important;
+    color :rgb(65, 81, 97);
+  }
+  .language-select {
+    border: none;
+    background: inherit;
+    display: flex;
+    align-items: center;
+  }

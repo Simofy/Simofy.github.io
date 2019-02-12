@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split(/&(?=(?:(?:[^"]*"){2})*[^"]*$)/),
+                sParameterName,
+                i;
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split(/=(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+        var OSName = "Unknown OS";
+        if (navigator.appVersion.indexOf("Win") != -1) OSName = "Windows";
+        if (navigator.appVersion.indexOf("Mac") != -1) OSName = "MacOS";
+        if (navigator.appVersion.indexOf("X11") != -1) OSName = "UNIX";
+        if (navigator.appVersion.indexOf("Linux") != -1) OSName = "Linux";
+
+        var lan = getUrlParameter("lan") == undefined ? "en" :
+            getUrlParameter("lan");
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1">
+    <meta name="description" content="Third project">
+    <meta name="author" content="Julius Simas Simutis">
+    <title>Julius Simas Simutis</title>
+
+
+    <!--=========================================
+		CSS
+		============================================= -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <link href="cv/css/simple-sidebar.css" rel="stylesheet">
+    <link href="cv/css/main.css" rel="stylesheet">
+    <link href="css/flags/flags.min.css" rel="stylesheet">
+    <link href="css/mfglabs/mfglabs_iconset.css" rel="stylesheet">
+    <!--=========================================`
+		JavaScript
+		============================================= -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+    <script src="js/lan.js"></script>
+    <script src="https://cdn.rawgit.com/hammerjs/jquery.hammer.js/master/jquery.hammer.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <!--__________________________________________-->
+    <script src="https://cdn.anychart.com/releases/8.2.1/js/graphics.min.js"></script>
+    <!-- <script async src=https://CDN.JSDelivr.net/g/p5.js(p5.min.js+addons/p5.dom.js+addons/p5.sound.js)></script> -->
+    <script type="text/javascript" src="cv/js/background.js"></script>
+</head>
+<!-- data-spy="scroll" data-target=".navbar" data-offset="50"  -->
+
+<body id="gestureDetection">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand text-center text-white " style="font-size: 1.5em;" id="lan-side-context">
+                    Context
+                </li>
+                <li>
+                    <a href="index.html" id="mobileNav_home">Home</a>
+                </li>
+                <li>
+                    <a href="https://github.com/Simofy?tab=repositories" id="mobileNav_projects">Projects</a>
+                </li>
+                <li>
+                    <a href="https://imgur.com/user/simofy/posts" id="mobileNav_gallery">Gallery</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <header id="intro_header" class="container-fluid">
+
+                <div class="text-center">
+                    <h1 id="introText" class="text-white text-uppercase">Julius Simas Simutis</h1>
+                </div>
+            </header>
+            <nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top flex-nowrap justify-content-center align-self-center">
+                <div class="col-lg-8">
+                    <button href="#menu-toggle" id="menu-toggle" class="navbar-toggler" type="button">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div id="navbarContent" class="collapse navbar-collapse">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="index.html" id="lan-menu-home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://github.com/Simofy?tab=repositories" id="lan-menu-projects">Projects</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://imgur.com/user/simofy/posts" id="lan-menu-gallery">Gallery</a>
+                            </li>
+                        </ul>
+                        <div class="nav-item float-right dropdown">
+                            <button class="language-select dropdown-toggle " type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span id="uniq_flag" class="flag flag-gb" ></span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/"><span class="flag flag-gb"></span></a>
+                                <a class="dropdown-item" href="/?lan=lt"><span class="flag flag-lt"></span></a>
+                            </div>
+                        </div>
+
+                        <!-- <span class="navbar-text">
+                                    Navbar text with an inline element
+                                    </span> -->
+                    </div>
+                </div>
+            </nav>
+            <div id="page-content">
+                <section class="container-fluid col-lg-8" style="background-color: white">
+                    <h2 id="lan-about-me">About me...</h2>
+                    <div class="row">
+
+                        <div class="col-12 text-justify">
+                            <div id="cv_image_main">
+                            </div>
+                            <div id="lan-abuot-text">
+
+                                I am an entry programmer, currently studying Software Engineering. I see
+                                myself as a social person, who can easily make new acquaintances, and in my
+                                free time I enjoy learning new technologies. I'am looking for work practices and a place to start my career. I like to generate art via
+                                programming and do challenges.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <h3 id="lan-education">Education</h3>
+                            <ul>
+                                <li id="lan-vag">VAG (Vilnius Antakalnio Gymnasium) 2012-2016</li>
+                                <li id="lan-viko">VIKO EIF (Vilniaus kolegija/University of Applied Sciences) 2016-2020</li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <h3 id="lan-traits">Traits</h3>
+                            <ul>
+                                <li id="lan-teamworking">Teamworking</li>
+                                <li id="lan-punctual">Punctual</li>
+                                <li id="lan-self">Self-motivated</li>
+                                <li id="lan-perf">Perfectionist</li>
+                                <li id="lan-resp">Responsible</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-justify">
+
+                            <h3 id="lan-contacts">Contacts</h3>
+                            <ul class="list-unstyled" style="text-align: center">
+                                <li class="contact-list">
+                                    <i class="icon-smartphone" aria-hidden="true"></i>
+                                    +37061606389
+                                </li>
+                                <li class="contact-list">
+                                    <i class="icon-mail" aria-hidden="true"></i>
+                                    julius.simutis@gmail.com
+                                </li>
+                                <li class="contact-list">
+                                    <i class="icon-git" aria-hidden="true"></i>
+                                    <a href="https://github.com/Simofy">github</a>
+                                </li>
+                                <li class="contact-list">
+                                    <i class="icon-placepin" aria-hidden="true"></i>
+                                    Žirmūnų g. 67A
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 id="lan-skills">SKILLS & QUALITIES</h3>
+                            <div class="row" style="width: 100%">
+
+                                <div style="width: 100%">
+                                    <a style="float:right" data-toggle="collapse" href="#collapse" role="button"
+                                        aria-expanded="false" aria-controls="collapse" id="lan-summary">
+                                        In general
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="collapse" id="collapse" style="width: 100% !important">
+                                    <div class="card card-body">
+                                        <div class="atribute-style">
+                                            <span class="circle circle-45px"></span>
+                                            <span class="text-circle">C++</span>
+                                        </div>
+                                        <div class="atribute-style">
+                                            <span class="circle circle-30px"></span>
+                                            <span class="text-circle">JavaScript</span>
+                                        </div>
+                                        <div class="atribute-style">
+                                            <span class="circle circle-30px" style="background: teal"></span>
+                                            <span class="text-circle">PHP</span>
+                                        </div>
+                                        <div class="atribute-style">
+                                            <span class="circle circle-25px"></span>
+                                            <span class="text-circle">C#/JAVA/PYTHON</span>
+                                        </div>
+                                        <div class="atribute-style">
+                                            <span class="circle circle-25px" style="background: salmon"></span>
+                                            <span class="text-circle">Node/React/Angular</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <h3>C++</h3>
+                            <section class="container-fluid col-lg-8 text-justify" id="lan-cpp-text">
+                                My main programming language. With it I creaated countless graphical programs, from
+                                cool visuals to my own UI library.
+                                I develop games, created my own 3d/game engine. Right now I'am working on compiler / OS
+                                on raspberry PI as my graduate work.
+                            </section>
+                            <a href="https://github.com/Simofy/brambleJam">
+                                <div class="demo-img demo-game">
+                                </div>
+                            </a>
+                            <a href="https://github.com/Simofy/Search-engine-cpp">
+                                <div class="demo-img demo-ui">
+                                </div>
+                            </a>
+
+                            <a href="https://imgur.com/RwvKRAK">
+                                <div class="demo-img demo-inf">
+                                </div>
+                            </a>
+                            <a href="https://github.com/Simofy/single-file-projects">
+                                <div class="demo-img demo-tree">
+                                </div>
+                            </a>
+
+                            <h3>JavaScript</h3>
+                            <section class="container-fluid col-lg-8 text-justify" id="lan-js-text">
+                                I love graphical design, so JavaScript is no enemy of mine. I developed minigames,
+                                responsive designs, and some simple projects.
+                            </section>
+                            <a href="https://simofy.github.io/games/photo-puzzle/puzzle.html">
+                                <div class="demo-img demo-puzzle">
+                                </div>
+                            </a>
+                            <a href="https://simofy.github.io/cv/projects.html">
+                                <div class="demo-img demo-evolution">
+                                </div>
+                            </a>
+
+                            <a href="https://simofy.github.io/en/">
+                                <div class="demo-img demo-diary">
+                                </div>
+                            </a>
+                            <a href="https://github.com/Simofy/Earthsturf">
+                                <div class="demo-img demo-turf">
+                                </div>
+                            </a>
+                            <h3>PHP (Laravel)</h3>
+                            <section class="container-fluid col-lg-8 text-justify" id="lan-php-text">
+                                I worked on web project that utilized Laravel.
+                            </section>
+                            <div style="width: 100%; text-align: center;">
+                                <a href="https://github.com/Simofy/Pro-Man">
+                                    <div class="demo-img demo-pro" style="float: none; display: inline-block;">
+                                    </div>
+                                </a>
+                            </div>
+                            <h3>Frameworks:</h3>
+                            <h3>Node.js</h3>
+                            <section class="container-fluid col-lg-8 text-justify" id="lan-node-text">
+                                I baked many web pages using node. From peer-to-peer games, to analytical budget web
+                                pages.
+                            </section>
+                            <h3>React / Angual</h3>
+                            <section class="container-fluid col-lg-8 text-justify" id="lan-react-text">
+                                Designed apps back to back with node.
+                            </section>
+                            <h3>SFML</h3>
+                            <section class="container-fluid col-lg-8 text-justify" id="lan-sfml-text">
+                                library / framework used for grapihcal development using c++/c#.
+                            </section>
+                            <h3 id="lan-other-lan">Languages that I know, and used for specific project:</h3>
+                            <h3>JAVA</h3>
+                            <section class="container-fluid col-lg-8 text-justify" id="lan-android-text">
+                                Developed simple android apps.
+                            </section>
+                            <h3>C#</h3>
+                            <section class="container-fluid col-lg-8 text-justify" id="lan-cs-text">
+                                .NET hosted and developed simple app.
+                            </section>
+                            <h3>PYTHON</h3>
+                            <section class="container-fluid col-lg-8 text-justify" id="lan-py-text">
+                                Created AI for simple robot in raspberry PI.
+                            </section>
+                        </div>
+                    </div>
+
+                </section>
+                <footer id="footer" class="container-fluid col-lg-12" style="background-color: white">
+
+                    <div class="footer-content justify-content-between text-center flex-wrap">
+                        <div class="copy-right-text">Copyright &copy; 2018 | All rights reserved to Julius Simas
+                            Simutis. </div>
+                        <!-- <div class="logo">
+                            <img src="img/logo.png" alt="">
+                        </div> -->
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <!-- End footer Area -->
+        <div id="backgroundSketch" style="width: 100%; height: 100%;position: fixed !important;z-index: -100 !important;background :rgb(102, 102, 153)">
+        </div>
+
+</body>
+
+<script type="text/javascript" src="cv/js/mobile.js"></script>
+
+</html>
