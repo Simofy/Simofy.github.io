@@ -18,6 +18,10 @@ let lan_data_lt = {
     "lan-tree":"UI parašytas nuo nulio naudojant tik c++.",
     "lan-puzzle":"Puzzle žaidimas parašytas JavaScript.",
     "lan-evolution":"Besimokinantis genetinis algoritmas parašytas JavaScript.",
+    "lan-driving":"Teisės (B)",
+    "lan-living":"Gyvenu Vilniuje, Žirmūnai.",
+    "lan-cpp-text":"C++ yra mano pagrindinė programavimo kalba. Su ja esu sukūręs daug grafinių programų, nuo įdomių algoritmų atvaizdavimų iki savo UI bibliotekos. Aš kuriu žaidimus naudodamas savo 3d/game variklį. Dabar aš darau kompiliatorių savo OS kuri bus ant raspberry PI, kaip baigiamąjį darbą.",
+    "lan-js-text":"Man patinka grafinės sąsajos, tai JavaScript man nėra priešas. Esu sukūręs daug puslapių kaip mini-games, turinčių responsive stilių ir kitų panašių puslapių. ",
     "lan-inf":"Infinity ženklas suprogramuotas c++"
 
 };

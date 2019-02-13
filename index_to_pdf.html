@@ -3,23 +3,37 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Julius Simas Simutis</title>
+    <title> </title>
     <meta name="viewport" content="width=1000">
     <link rel="stylesheet" href="css/cv.css">
     <link href="css/flags/flags.min.css" rel="stylesheet">
+
+    <style>
+        #profile section {
+    margin-right: 40px; 
+    border-radius: 50%;
+    float: left;
+    height: 240px;
+    width: 240px;
+    box-sizing: border-box; overflow: hidden;
+}
+#profile section img{
+    width: 150%;
+    position: relative;
+    left:-25%;
+}
+    </style>
 </head>
 
 <body id="body">
-    <div style="position: absolute; top:0; right: 0;">
-        <a class="dropdown-item" href="/"><span class="flag flag-gb"></span></a>
-        <a class="dropdown-item" href="/?lan=lt"><span class="flag flag-lt"></span></a>
-    </div>
     <header id="header">
         Julius Simas Simutis
     </header>
     <div id="main">
-        <div id="profile" style="text-align: justify">
-            <div></div>
+        <div id="profile"  style="text-align: justify">
+            <section>
+                    <img src="https://i.imgur.com/OdEqcDVl.jpg">
+            </section>
             <p><span id="lan-abuot-text">
                     Bachelor student at vilnius university of applied sciences studying Software Engineering. I see
                     myself as a social person, who can easily make new acquaintances. I'am looking for work practices
@@ -84,67 +98,23 @@
                 </div>
             </div>
         </div>
-        <div class="section recent-work">
+        <div class="section recent-work" style="width: 100%; text-align: justify">
             <div class="divider"></div>
-            <h1 id="lan-projects">Projects</h1>
-            <div class="highlight-proj">
-                <a href="https://github.com/Simofy/brambleJam">
-                    <div class="demo-img demo-game">
+            <h1>Extra</h1>
+            <div style="width: 100%; padding: 15px">
+
+                <p id="lan-driving">Driving license (B).</p>
+                <p id="lan-living">Living in Vilnius, žirmūnai.</p>
+                <p  id="lan-cpp-text">C++ is my main programming language. With it I creaated countless graphical programs, from
+                    cool visuals to my own UI library.
+                    I develop games, created my own 3d/game engine. Right now I'am working on compiler / OS
+                    on raspberry PI as my graduate work.</p>
+                    <p  id="lan-js-text"> I love graphical design, so JavaScript is no enemy of mine. I developed minigames,
+                        responsive designs, and some simple projects.</p>
                     </div>
-                </a>
-                <p id="lan-game-intro">Game writen in a couple of days from scratch using c++11 and SFML.</p>
-            </div>
-            <div class="highlight-proj">
-                <a href="https://github.com/Simofy/Search-engine-cpp">
-                    <div class="demo-img demo-ui">
-                    </div>
-                </a>
-                <p id="lan-search">Search engine using c++ and UI interface.</p>
-            </div>
-            <div class="highlight-proj">
-                <a href="https://github.com/Simofy/single-file-projects">
-                    <div class="demo-img demo-tree">
-                    </div>
-                </a>
-                <p>Writen UI from scratch using c++, demonstrating trees.</p>
-            </div>
-            <div class="highlight-proj">
-                <a href="https://simofy.github.io/games/photo-puzzle/puzzle.html">
-                    <div class="demo-img demo-puzzle">
-                    </div>
-                </a>
-                <p id="lan-puzzle">Puzzle game writen in JavaScript</p>
-            </div>
-            <div class="highlight-proj">
-                <a href="https://simofy.github.io/cv/projects.html">
-                    <div class="demo-img demo-evolution">
-                    </div>
-                </a>
-                <p id="lan-evolution">Evolution steering and genetic learing using JavaScript.</p>
-            </div>
-            <div class="highlight-proj">
-                <a href="https://imgur.com/RwvKRAK">
-                    <div class="demo-img demo-inf">
-                    </div>
-                </a>
-                <p id="lan-inf">Simple graphics using c++</p>
-            </div>
+
         </div>
         <div class="divider"></div>
-        <div class="section" style="text-align: justify">
-            <h1 id="lan-projects">Extra</h1>
-
-            <p id="lan-driving">Driving license (B).</p>
-            <p id="lan-living">Living in Vilnius, žirmūnai.</p>
-            <p  id="lan-cpp-text">C++ is my main programming language. With it I creaated countless graphical programs, from
-                cool visuals to my own UI library.
-                I develop games, created my own 3d/game engine. Right now I'am working on compiler / OS
-                on raspberry PI as my graduate work.</p>
-            <p  id="lan-js-text"> I love graphical design, so JavaScript is no enemy of mine. I developed minigames,
-                responsive designs, and some simple projects.</p>
-        </div>
-        <div id="footer" style="padding-bottom: 50px;">
-        </div>
     </div>
 </body>
 <script src="js/lan.js"></script>
