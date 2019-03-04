@@ -253,7 +253,9 @@ ul {
   .demo-pro{
     background-image: url("https://i.imgur.com/fOv3Syzm.png");
   }
-
+  .demo-react{
+    background-image: url("https://i.imgur.com/zo01RTV.gif");
+  }
 
   .circle {
     margin: 2px;
