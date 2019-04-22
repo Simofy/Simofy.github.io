@@ -38,7 +38,7 @@ function preload() {
 
 	var xhr = new XMLHttpRequest();
 	let definedUrl = getUrlParameter("image");
-	if (definedUrl == undefined) definedUrl = 'https://picsum.photos/' + options.game.w + '/' + options.game.h + '/?random';
+	if (definedUrl == undefined) definedUrl = 'https://picsum.photos/' + options.game.w + '/' + options.game.h + '?random';
 	else
 		definedUrl = 'https://picsum.photos/' + options.game.w + '/' + options.game.h + '/?image=' + definedUrl;
 
