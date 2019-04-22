@@ -40,7 +40,7 @@ function preload() {
 	let definedUrl = getUrlParameter("image");
 	if (definedUrl == undefined) definedUrl = 'https://picsum.photos/' + options.game.w + '/' + options.game.h + '?random';
 	else
-		definedUrl = 'https://picsum.photos/' + options.game.w + '/' + options.game.h + '/?image=' + definedUrl;
+		definedUrl = 'https://picsum.photos/' + options.game.w + '/' + options.game.h + '?image=' + definedUrl;
 
 	customImage = getUrlParameter("custom");
 	if (customImage != undefined) {
