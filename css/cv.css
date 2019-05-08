@@ -111,7 +111,8 @@ h1 {
     height: 240px;
     width: 240px;
     box-sizing: border-box;
-    background-image: url("https://i.imgur.com/OdEqcDVl.jpg");
+    /* background-image: url("https://i.imgur.com/OdEqcDVl.jpg"); */
+    background-image: url("https://avatars3.githubusercontent.com/u/29658665?s=460&v=4");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
